@@ -11,8 +11,8 @@ public class LtSport {
     @Column(name = "sport_id")
     private Integer sportId;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "description", nullable = false)
+    private String description;
 
     @Column(name = "active", nullable = false)
     private Boolean active;
@@ -41,12 +41,12 @@ public class LtSport {
         return sportId;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Boolean getActive() {
@@ -93,7 +93,7 @@ public class LtSport {
     public String toString() {
         return "LtSport{" +
                 "sportId=" + sportId +
-                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", active=" + active +
                 ", createdBy=" + createdBy +
                 ", createdAt=" + createdAt +
