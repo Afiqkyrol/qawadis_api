@@ -21,14 +21,14 @@ public class LtSport {
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
     private DtUser createdBy;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "maintain_by", referencedColumnName = "user_id")
     private DtUser maintainBy;
 
-    @Column(name = "maintain_at")
+    @Column(name = "maintain_at", columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime maintainAt;
 
     // Constructor
