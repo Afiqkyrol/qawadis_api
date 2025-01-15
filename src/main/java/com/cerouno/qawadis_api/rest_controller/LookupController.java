@@ -23,9 +23,9 @@ public class LookupController {
     }
 
     @GetMapping("/item")
-    public ResponseEntity<?> getLookupData(@RequestParam("table") String table) {
+    public ResponseEntity<?> getLookupData(@RequestParam("table") String table, @RequestParam("init") boolean init) {
         try {
-            LookupDataDTO<?> lookupData = lookupService.getLookupDataActive(table);
+            LookupDataDTO<?> lookupData = lookupService.getLookupDataActive(table, init);
             return ResponseBuilder.success(AppConstants.SUCCESS_MSG, lookupData);
         }catch (Exception e){
             return ResponseBuilder.error(AppConstants.ERROR_MSG, e.getCause().getMessage());

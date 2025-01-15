@@ -1,8 +1,10 @@
 package com.cerouno.qawadis_api.entity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "DT_USER")
 public class DtUser {
 

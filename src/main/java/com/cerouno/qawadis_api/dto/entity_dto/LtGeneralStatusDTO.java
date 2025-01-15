@@ -1,48 +1,32 @@
-package com.cerouno.qawadis_api.entity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+package com.cerouno.qawadis_api.dto.entity_dto;
+
+import com.cerouno.qawadis_api.entity.DtUser;
+
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "LT_GENERAL_STATUS")
-public class LtGeneralStatus {
+public class LtGeneralStatusDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "status_id")
     private Integer statusId;
-
-    @Column(name = "code", nullable = false, unique = true)
     private String code;
-
-    @Column(name = "description", nullable = false)
     private String description;
-
-    @Column(name = "active", nullable = false)
     private Boolean active;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by", referencedColumnName = "user_id")
     private DtUser createdBy;
-
-    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "maintain_by", referencedColumnName = "user_id")
     private DtUser maintainBy;
-
-    @Column(name = "maintain_at", columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime maintainAt;
 
-    // Constructor
-    public LtGeneralStatus(){
-        active = true;
-    }
+    // Constructors
 
-    // Getters and setters...
+    public LtGeneralStatusDTO(){}
+
+    // Getter and Setter methods
+
     public Integer getStatusId() {
         return statusId;
+    }
+
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
     }
 
     public String getCode() {
@@ -103,7 +87,7 @@ public class LtGeneralStatus {
 
     @Override
     public String toString() {
-        return "LtGeneralStatus{" +
+        return "LtGeneralStatusDTO{" +
                 "statusId=" + statusId +
                 ", code='" + code + '\'' +
                 ", description='" + description + '\'' +
