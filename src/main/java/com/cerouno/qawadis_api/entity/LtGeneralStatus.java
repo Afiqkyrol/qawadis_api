@@ -20,7 +20,7 @@ public class LtGeneralStatus {
     @Column(name = "active", nullable = false)
     private Boolean active;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
     private DtUser createdBy;
 
