@@ -1,15 +1,13 @@
 package com.cerouno.qawadis_api.rest_controller;
 
 import com.cerouno.qawadis_api.constants.AppConstants;
-import com.cerouno.qawadis_api.dto.LookupDataDTO;
+import com.cerouno.qawadis_api.dto.LookupDataDto;
+import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.service.LookupService;
 import com.cerouno.qawadis_api.utility.ResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/lookups")
@@ -23,12 +21,21 @@ public class LookupController {
     }
 
     @GetMapping("/item")
-    public ResponseEntity<?> getLookupData(@RequestParam("table") String table, @RequestParam("init") boolean init) {
+    public ResponseEntity<?> getLookupDataActive(@RequestParam("table") String table, @RequestParam("init") boolean init) {
         try {
-            LookupDataDTO<?> lookupData = lookupService.getLookupDataActive(table, init);
+            LookupDataDto<?> lookupData = lookupService.getLookupDataActive(table, init);
             return ResponseBuilder.success(AppConstants.SUCCESS_MSG, lookupData);
         }catch (Exception e){
-            return ResponseBuilder.error(AppConstants.ERROR_MSG, e.getCause().getMessage());
+            return ResponseBuilder.error(AppConstants.ERROR_MSG, e.getMessage());
+        }
+    }
+
+    @PostMapping("/item")
+    public ResponseEntity<?> saveLookupData(@RequestBody RequestDto requestDto, @RequestParam("table") String table){
+        try {
+            return ResponseBuilder.success(AppConstants.SUCCESS_MSG, lookupService.saveLookupData(requestDto, table));
+        } catch (Exception e) {
+            return ResponseBuilder.error(AppConstants.ERROR_MSG, e.getMessage());
         }
     }
 }

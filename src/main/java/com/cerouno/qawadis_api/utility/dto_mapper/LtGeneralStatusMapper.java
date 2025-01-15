@@ -1,20 +1,19 @@
 package com.cerouno.qawadis_api.utility.dto_mapper;
 
-import com.cerouno.qawadis_api.dto.entity_dto.LtGeneralStatusDTO;
+import com.cerouno.qawadis_api.dto.entity_dto.LtGeneralStatusDto;
 import com.cerouno.qawadis_api.entity.LtGeneralStatus;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class LtGeneralStatusMapper {
-    public static LtGeneralStatusDTO toDto(LtGeneralStatus entity, boolean init) {
+    public static LtGeneralStatusDto toDto(LtGeneralStatus entity, boolean init) {
         if (entity == null) {
             return null;
         }
 
-        LtGeneralStatusDTO dto = new LtGeneralStatusDTO();
+        LtGeneralStatusDto dto = new LtGeneralStatusDto();
         dto.setStatusId(entity.getStatusId());
         dto.setCode(entity.getCode());
         dto.setDescription(entity.getDescription());
@@ -30,18 +29,18 @@ public class LtGeneralStatusMapper {
         return dto;
     }
 
-    public static List<LtGeneralStatusDTO> toDto(List<LtGeneralStatus> entityList, boolean init) {
+    public static List<LtGeneralStatusDto> toDto(List<LtGeneralStatus> entityList, boolean init) {
         if (entityList.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<LtGeneralStatusDTO> dtoList = new ArrayList<>();
+        List<LtGeneralStatusDto> dtoList = new ArrayList<>();
 
         for(int i = 0; i<entityList.size(); i++){
 
             LtGeneralStatus entity = entityList.get(i);
 
-            LtGeneralStatusDTO dto = new LtGeneralStatusDTO();
+            LtGeneralStatusDto dto = new LtGeneralStatusDto();
             dto.setStatusId(entity.getStatusId());
             dto.setCode(entity.getCode());
             dto.setDescription(entity.getDescription());

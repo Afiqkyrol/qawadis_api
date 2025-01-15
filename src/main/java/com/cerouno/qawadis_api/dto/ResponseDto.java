@@ -1,12 +1,12 @@
 package com.cerouno.qawadis_api.dto;
 
-public class ResponseDTO<T> {
+public class ResponseDto<T> {
 
     private String message;
     private T data;
     private String detailMessage;
 
-    public ResponseDTO(String message, T data, String detailMessage) {
+    public ResponseDto(String message, T data, String detailMessage) {
         this.message = message;
         this.data = data;
         this.detailMessage = detailMessage;
@@ -40,15 +40,15 @@ public class ResponseDTO<T> {
 
     // Static factory methods for consistency
 
-    public static <T> ResponseDTO<T> success(String message, T data) {
-        return new ResponseDTO<>(message, data, null);
+    public static <T> ResponseDto<T> success(String message, T data) {
+        return new ResponseDto<>(message, data, null);
     }
 
-    public static <T> ResponseDTO<T> success(String message, T data, String detailMessage) {
-        return new ResponseDTO<>(message, data, detailMessage);
+    public static <T> ResponseDto<T> success(String message, T data, String detailMessage) {
+        return new ResponseDto<>(message, data, detailMessage);
     }
 
-    public static <T> ResponseDTO<T> error(String message, String detailMessage) {
-        return new ResponseDTO<>(message, null, detailMessage);
+    public static <T> ResponseDto<T> error(String message, String detailMessage) {
+        return new ResponseDto<>(message, null, detailMessage);
     }
 }

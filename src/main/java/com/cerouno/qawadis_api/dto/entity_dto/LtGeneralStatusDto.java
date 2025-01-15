@@ -4,7 +4,7 @@ import com.cerouno.qawadis_api.entity.DtUser;
 
 import java.time.LocalDateTime;
 
-public class LtGeneralStatusDTO {
+public class LtGeneralStatusDto {
 
     private Integer statusId;
     private String code;
@@ -17,7 +17,7 @@ public class LtGeneralStatusDTO {
 
     // Constructors
 
-    public LtGeneralStatusDTO(){}
+    public LtGeneralStatusDto(){}
 
     // Getter and Setter methods
 

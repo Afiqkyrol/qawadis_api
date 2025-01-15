@@ -2,11 +2,11 @@ package com.cerouno.qawadis_api.dto;
 
 import java.util.List;
 
-public class LookupDataDTO<T> {
+public class LookupDataDto<T> {
 
     private List<T> lookupData;
 
-    public LookupDataDTO(List<T> lookupData) {
+    public LookupDataDto(List<T> lookupData) {
         this.lookupData = lookupData;
     }
 

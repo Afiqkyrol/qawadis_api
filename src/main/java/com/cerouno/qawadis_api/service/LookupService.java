@@ -1,9 +1,11 @@
 package com.cerouno.qawadis_api.service;
 
-import com.cerouno.qawadis_api.dto.LookupDataDTO;
-
-import java.util.List;
+import com.cerouno.qawadis_api.dto.LookupDataDto;
+import com.cerouno.qawadis_api.dto.RequestDto;
 
 public interface LookupService {
-    LookupDataDTO<?> getLookupDataActive (String table, boolean init);
+
+    LookupDataDto<?> getLookupDataActive (String table, boolean init);
+
+    Integer saveLookupData (RequestDto lookupData, String table);
 }
