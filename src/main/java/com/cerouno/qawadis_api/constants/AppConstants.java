@@ -3,7 +3,7 @@ package com.cerouno.qawadis_api.constants;
 public interface AppConstants {
 
     // Common Messages
-    public static final String ERROR_MSG = "Something went wrong!";
+    public static final String ERROR_MSG = "An error occurred!";
     public static final String SUCCESS_MSG = "Operation was successful!";
 
     // Date format patterns
