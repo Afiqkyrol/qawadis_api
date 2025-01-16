@@ -22,18 +22,18 @@ public class DtUser {
     @Column(name = "username", nullable = false)
     private String username;
 
-    @ManyToOne
-    @JoinColumn(name = "created_by", referencedColumnName = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "created_by", updatable = false, referencedColumnName = "user_id")
     private DtUser createdBy;
 
-    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "maintain_by", referencedColumnName = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "maintain_by", insertable = false, referencedColumnName = "user_id")
     private DtUser maintainBy;
 
-    @Column(name = "maintain_at", columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "maintain_at", insertable = false, columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime maintainAt;
 
     // Constructor

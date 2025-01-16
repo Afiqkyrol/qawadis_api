@@ -1,49 +1,27 @@
-package com.cerouno.qawadis_api.entity;
+package com.cerouno.qawadis_api.dto.entity_dto;
 
-import com.cerouno.qawadis_api.entity.listener.LtSportListener;
-import com.cerouno.qawadis_api.repository.DtUserRepository;
-import jakarta.persistence.*;
+import com.cerouno.qawadis_api.entity.DtUser;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "LT_SPORT")
-@EntityListeners(LtSportListener.class)
-public class LtSport {
+public class LtSportDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sport_id")
     private Integer sportId;
-
-    @Column(name = "description", nullable = false)
     private String description;
-
-    @Column(name = "active", nullable = false)
     private Boolean active;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by", nullable = false, updatable = false, referencedColumnName = "user_id")
     private DtUser createdBy;
-
-    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "maintain_by", insertable = false, referencedColumnName = "user_id")
     private DtUser maintainBy;
-
-    @Column(name = "maintain_at", insertable = false, columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime maintainAt;
 
-    // Constructor
-    public LtSport() {
-        active = true;
-    }
+    public LtSportDto(){}
 
-    // Getters and setters...
     public Integer getSportId() {
         return sportId;
+    }
+
+    public void setSportId(Integer sportId) {
+        this.sportId = sportId;
     }
 
     public String getDescription() {
@@ -70,10 +48,6 @@ public class LtSport {
         this.createdBy = createdBy;
     }
 
-    public void setCreatedBy(Integer id, DtUserRepository dtUserRepository) {
-        this.createdBy = dtUserRepository.findByUserId(id);
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -90,10 +64,6 @@ public class LtSport {
         this.maintainBy = maintainBy;
     }
 
-    public void setMaintainBy(Integer id, DtUserRepository dtUserRepository) {
-        this.maintainBy = dtUserRepository.findByUserId(id);
-    }
-
     public LocalDateTime getMaintainAt() {
         return maintainAt;
     }
@@ -104,7 +74,7 @@ public class LtSport {
 
     @Override
     public String toString() {
-        return "LtSport{" +
+        return "LtSportDto{" +
                 "sportId=" + sportId +
                 ", description='" + description + '\'' +
                 ", active=" + active +
@@ -115,4 +85,3 @@ public class LtSport {
                 '}';
     }
 }
-

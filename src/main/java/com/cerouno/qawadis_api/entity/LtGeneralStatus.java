@@ -1,10 +1,15 @@
 package com.cerouno.qawadis_api.entity;
+import com.cerouno.qawadis_api.entity.listener.LtGeneralStatusListener;
+import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "LT_GENERAL_STATUS")
+@EntityListeners(LtGeneralStatusListener.class)
 public class LtGeneralStatus {
 
     @Id
@@ -22,17 +27,17 @@ public class LtGeneralStatus {
     private Boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by", referencedColumnName = "user_id")
+    @JoinColumn(name = "created_by", nullable = false, updatable = false, referencedColumnName = "user_id")
     private DtUser createdBy;
 
-    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "maintain_by", referencedColumnName = "user_id")
+    @JoinColumn(name = "maintain_by", insertable = false, referencedColumnName = "user_id")
     private DtUser maintainBy;
 
-    @Column(name = "maintain_at", columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @Column(name = "maintain_at", insertable = false, columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime maintainAt;
 
     // Constructor
@@ -77,6 +82,10 @@ public class LtGeneralStatus {
         this.createdBy = createdBy;
     }
 
+    public void setCreatedBy(Integer id, DtUserRepository dtUserRepository) {
+        this.createdBy = dtUserRepository.findByUserId(id);
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -91,6 +100,10 @@ public class LtGeneralStatus {
 
     public void setMaintainBy(DtUser maintainBy) {
         this.maintainBy = maintainBy;
+    }
+
+    public void setMaintainBy(Integer id, DtUserRepository dtUserRepository) {
+        this.maintainBy = dtUserRepository.findByUserId(id);
     }
 
     public LocalDateTime getMaintainAt() {

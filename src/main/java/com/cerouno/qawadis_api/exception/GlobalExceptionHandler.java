@@ -13,4 +13,5 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleException(Exception e) {
         return ResponseBuilder.error(AppConstants.ERROR_MSG, e.getCause().getMessage());
     }
+
 }

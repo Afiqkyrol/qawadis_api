@@ -15,11 +15,7 @@ public class LtGeneralStatusDto {
     private DtUser maintainBy;
     private LocalDateTime maintainAt;
 
-    // Constructors
-
     public LtGeneralStatusDto(){}
-
-    // Getter and Setter methods
 
     public Integer getStatusId() {
         return statusId;

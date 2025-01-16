@@ -18,11 +18,11 @@ public class RequestDto<T> {
         this.userId = userId;
     }
 
-    public T getData() {
+    public T getBody() {
         return body;
     }
 
-    public void setData(T body) {
+    public void setBody(T body) {
         this.body = body;
     }
 }
