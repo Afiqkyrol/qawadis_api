@@ -50,6 +50,10 @@ public class LtGeneralStatus {
         return statusId;
     }
 
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
+    }
+
     public String getCode() {
         return code;
     }

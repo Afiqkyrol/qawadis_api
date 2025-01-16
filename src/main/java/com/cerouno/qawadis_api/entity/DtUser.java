@@ -1,4 +1,5 @@
 package com.cerouno.qawadis_api.entity;
+import com.cerouno.qawadis_api.entity.listener.DtUserListener;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -6,6 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "DT_USER")
+@EntityListeners(DtUserListener.class)
 public class DtUser {
 
     @Id
@@ -42,6 +44,10 @@ public class DtUser {
     // Getters and setters...
     public Integer getUserId() {
         return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

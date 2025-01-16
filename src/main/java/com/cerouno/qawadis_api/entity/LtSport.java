@@ -46,6 +46,10 @@ public class LtSport {
         return sportId;
     }
 
+    public void setSportId(Integer sportId) {
+        this.sportId = sportId;
+    }
+
     public String getDescription() {
         return description;
     }

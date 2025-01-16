@@ -1,4 +1,5 @@
 package com.cerouno.qawadis_api.entity;
+import com.cerouno.qawadis_api.entity.listener.DtMatchListener;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
@@ -6,6 +7,7 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "DT_MATCH")
+@EntityListeners(DtMatchListener.class)
 public class DtMatch {
 
     @Id

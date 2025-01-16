@@ -12,4 +12,6 @@ public interface LtGeneralStatusRepository extends JpaRepository<LtGeneralStatus
     LtGeneralStatus findByCode(String code);
 
     LtGeneralStatus findByCodeAndActive(String code, Boolean active);
+
+    boolean existsByCode(String code);
 }
