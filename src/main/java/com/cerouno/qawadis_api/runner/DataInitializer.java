@@ -39,7 +39,7 @@ public class DataInitializer implements CommandLineRunner {
         user1.setPassword("$2a$10$.CqoxTFkiIWMEcXTDa/e9.c8V47yxhZNoP4.BTC5NEDad4aUkMnLy");
         dtUserRepository.save(user1);
 
-        //status
+        //status active
         LtGeneralStatus status = new LtGeneralStatus();
         if (ltGeneralStatusRepository.existsById(1)) {
             status.setStatusId(1);
@@ -50,6 +50,30 @@ public class DataInitializer implements CommandLineRunner {
         status.setCode("ACTIVE");
         status.setDescription("ACTIVE");
         ltGeneralStatusRepository.save(status);
+
+        //status inactive
+        LtGeneralStatus status2 = new LtGeneralStatus();
+        if (ltGeneralStatusRepository.existsById(2)) {
+            status2.setStatusId(2);
+            status2.setMaintainBy(dtUserRepository.findByUserId(1));
+        }else{
+            status2.setCreatedBy(dtUserRepository.findByUserId(1));
+        }
+        status2.setCode("INACTIVE");
+        status2.setDescription("INACTIVE");
+        ltGeneralStatusRepository.save(status2);
+
+        //status cancel
+        LtGeneralStatus status3 = new LtGeneralStatus();
+        if (ltGeneralStatusRepository.existsById(3)) {
+            status3.setStatusId(3);
+            status3.setMaintainBy(dtUserRepository.findByUserId(1));
+        }else{
+            status3.setCreatedBy(dtUserRepository.findByUserId(1));
+        }
+        status3.setCode("CANCEL");
+        status3.setDescription("CANCEL");
+        ltGeneralStatusRepository.save(status3);
 
         //sport
         LtSport sport = new LtSport();

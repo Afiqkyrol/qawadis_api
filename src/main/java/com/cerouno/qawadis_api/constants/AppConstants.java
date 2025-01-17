@@ -13,4 +13,9 @@ public interface AppConstants {
     public static final String LT_GENERAL_STATUS_TABLE = "LT001";
     public static final String LT_SPORT_TABLE = "LT002";
 
+    // Status
+    public static final Integer GSTS_ACTIVE = 1;
+    public static final Integer GSTS_INACTIVE = 2;
+    public static final Integer GSTS_CANCEL = 3;
+
 }
