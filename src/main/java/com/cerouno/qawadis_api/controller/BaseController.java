@@ -8,6 +8,6 @@ public class BaseController {
 
     @GetMapping("/")
     public String root(){
-        return "qawadis_api";
+        return "Qawadis_API";
     }
 }
