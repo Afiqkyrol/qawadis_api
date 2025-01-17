@@ -7,4 +7,10 @@ import java.util.Optional;
 
 public interface DtUserRepository extends JpaRepository<DtUser,Integer> {
     DtUser findByUserId(Integer userId);
+
+    Optional<DtUser> findByEmail(String email);
+
+    Optional<DtUser> findByUsername(String username);
+
+    boolean existsByEmail(String email);
 }
