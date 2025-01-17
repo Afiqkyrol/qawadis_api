@@ -9,9 +9,9 @@ public class LtSportDto {
     private Integer sportId;
     private String description;
     private Boolean active;
-    private DtUser createdBy;
+    private DtUserDto createdBy;
     private LocalDateTime createdAt;
-    private DtUser maintainBy;
+    private DtUserDto maintainBy;
     private LocalDateTime maintainAt;
 
     public LtSportDto(){}
@@ -40,11 +40,11 @@ public class LtSportDto {
         this.active = active;
     }
 
-    public DtUser getCreatedBy() {
+    public DtUserDto getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(DtUser createdBy) {
+    public void setCreatedBy(DtUserDto createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -56,11 +56,11 @@ public class LtSportDto {
         this.createdAt = createdAt;
     }
 
-    public DtUser getMaintainBy() {
+    public DtUserDto getMaintainBy() {
         return maintainBy;
     }
 
-    public void setMaintainBy(DtUser maintainBy) {
+    public void setMaintainBy(DtUserDto maintainBy) {
         this.maintainBy = maintainBy;
     }
 

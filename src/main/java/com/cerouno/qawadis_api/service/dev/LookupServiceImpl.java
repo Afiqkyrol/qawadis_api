@@ -26,16 +26,21 @@ public class LookupServiceImpl implements LookupService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private final LtGeneralStatusRepository ltGeneralStatusRepository;
-    private final LtSportRepository ltSportRepository;
-    private final DtUserRepository dtUserRepository;
+    @Autowired
+    private LtGeneralStatusRepository ltGeneralStatusRepository;
 
     @Autowired
-    public LookupServiceImpl(DtUserRepository dtUserRepository, LtGeneralStatusRepository ltGeneralStatusRepository, LtSportRepository ltSportRepository) {
-        this.dtUserRepository = dtUserRepository;
-        this.ltGeneralStatusRepository = ltGeneralStatusRepository;
-        this.ltSportRepository = ltSportRepository;
-    }
+    private LtSportRepository ltSportRepository;
+
+    @Autowired
+    private DtUserRepository dtUserRepository;
+
+//    @Autowired
+//    public LookupServiceImpl(DtUserRepository dtUserRepository, LtGeneralStatusRepository ltGeneralStatusRepository, LtSportRepository ltSportRepository) {
+//        this.dtUserRepository = dtUserRepository;
+//        this.ltGeneralStatusRepository = ltGeneralStatusRepository;
+//        this.ltSportRepository = ltSportRepository;
+//    }
 
     @Override
     public LookupDataDto<?> getLookupDataActive(String table, boolean init) {

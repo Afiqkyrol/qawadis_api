@@ -24,8 +24,8 @@ public class LtGeneralStatusMapper {
         dto.setMaintainAt(entity.getMaintainAt());
 
         if (init) {
-            dto.setCreatedBy(entity.getCreatedBy());
-            dto.setMaintainBy(entity.getMaintainBy());
+            dto.setCreatedBy(DtUserMapper.toDto(entity.getCreatedBy()));
+            dto.setMaintainBy(DtUserMapper.toDto(entity.getMaintainBy()));
         }
 
         return dto;
@@ -52,8 +52,8 @@ public class LtGeneralStatusMapper {
             dto.setMaintainAt(entity.getMaintainAt());
 
             if (init) {
-                dto.setCreatedBy(entity.getCreatedBy());
-                dto.setMaintainBy(entity.getMaintainBy());
+                dto.setCreatedBy(DtUserMapper.toDto(entity.getCreatedBy()));
+                dto.setMaintainBy(DtUserMapper.toDto(entity.getMaintainBy()));
             }
 
             dtoList.add(dto);

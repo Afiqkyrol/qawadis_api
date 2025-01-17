@@ -1,74 +1,40 @@
-package com.cerouno.qawadis_api.entity;
-import com.cerouno.qawadis_api.entity.listener.DtMatchListener;
-import com.cerouno.qawadis_api.repository.DtUserRepository;
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
+package com.cerouno.qawadis_api.dto.entity_dto;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-@Entity
-@Table(name = "DT_MATCH")
-@EntityListeners(DtMatchListener.class)
-public class DtMatch {
+public class DtMatchDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "match_id")
     private Integer matchId;
-
-    @ManyToOne
-    @JoinColumn(name = "sport_id", referencedColumnName = "sport_id")
-    private LtSport sport;
-
-    @Column(name = "venue", nullable = false)
+    private LtSportDto sport;
     private String venue;
-
-    @Column(name = "address", nullable = false)
     private String address;
-
-    @Column(name = "date", nullable = false)
     private LocalDate date;
-
-    @Column(name = "time", nullable = false)
     private LocalTime time;
-
-    @Column(name = "map")
     private String map;
-
-    @Column(name = "remark")
     private String remark;
-
-    @ManyToOne
-    @JoinColumn(name = "status_id", referencedColumnName = "status_id")
-    private LtGeneralStatus status;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by", nullable = false, updatable = false, referencedColumnName = "user_id")
-    private DtUser createdBy;
-
-    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LtGeneralStatusDto status;
+    private DtUserDto createdBy;
     private LocalDateTime createdAt;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "maintain_by", insertable = false, referencedColumnName = "user_id")
-    private DtUser maintainBy;
-
-    @Column(name = "maintain_at", insertable = false, columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    private DtUserDto maintainBy;
     private LocalDateTime maintainAt;
 
-    // Constructor
-    public DtMatch(){}
+    public DtMatchDto (){}
 
-    // Getters and setters...
     public Integer getMatchId() {
         return matchId;
     }
 
-    public LtSport getSport() {
+    public void setMatchId(Integer matchId) {
+        this.matchId = matchId;
+    }
+
+    public LtSportDto getSport() {
         return sport;
     }
 
-    public void setSport(LtSport sport) {
+    public void setSport(LtSportDto sport) {
         this.sport = sport;
     }
 
@@ -120,24 +86,20 @@ public class DtMatch {
         this.remark = remark;
     }
 
-    public LtGeneralStatus getStatus() {
+    public LtGeneralStatusDto getStatus() {
         return status;
     }
 
-    public void setStatus(LtGeneralStatus status) {
+    public void setStatus(LtGeneralStatusDto status) {
         this.status = status;
     }
 
-    public DtUser getCreatedBy() {
+    public DtUserDto getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(DtUser createdBy) {
+    public void setCreatedBy(DtUserDto createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public void setCreatedBy(Integer id, DtUserRepository dtUserRepository) {
-        this.createdBy = dtUserRepository.findByUserId(id);
     }
 
     public LocalDateTime getCreatedAt() {
@@ -148,16 +110,12 @@ public class DtMatch {
         this.createdAt = createdAt;
     }
 
-    public DtUser getMaintainBy() {
+    public DtUserDto getMaintainBy() {
         return maintainBy;
     }
 
-    public void setMaintainBy(DtUser maintainBy) {
+    public void setMaintainBy(DtUserDto maintainBy) {
         this.maintainBy = maintainBy;
-    }
-
-    public void setMaintainBy(Integer id, DtUserRepository dtUserRepository) {
-        this.maintainBy = dtUserRepository.findByUserId(id);
     }
 
     public LocalDateTime getMaintainAt() {
@@ -170,7 +128,7 @@ public class DtMatch {
 
     @Override
     public String toString() {
-        return "DtMatch{" +
+        return "DtMatchDto{" +
                 "matchId=" + matchId +
                 ", sport=" + sport +
                 ", venue='" + venue + '\'' +
@@ -187,4 +145,3 @@ public class DtMatch {
                 '}';
     }
 }
-

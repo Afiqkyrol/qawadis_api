@@ -2,10 +2,7 @@ package com.cerouno.qawadis_api.security;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import javax.security.sasl.AuthenticationException;
-import java.nio.file.AccessDeniedException;
-
-public class Security {
+public class SecurityAuth {
 
     public static boolean AuthorizeToken(HttpServletRequest request){
 
