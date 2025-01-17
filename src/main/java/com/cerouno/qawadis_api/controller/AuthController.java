@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.rest_controller;
+package com.cerouno.qawadis_api.controller;
 
 import com.cerouno.qawadis_api.constants.AppConstants;
 import com.cerouno.qawadis_api.dto.LoginDto;

@@ -35,13 +35,6 @@ public class LookupServiceImpl implements LookupService {
     @Autowired
     private DtUserRepository dtUserRepository;
 
-//    @Autowired
-//    public LookupServiceImpl(DtUserRepository dtUserRepository, LtGeneralStatusRepository ltGeneralStatusRepository, LtSportRepository ltSportRepository) {
-//        this.dtUserRepository = dtUserRepository;
-//        this.ltGeneralStatusRepository = ltGeneralStatusRepository;
-//        this.ltSportRepository = ltSportRepository;
-//    }
-
     @Override
     public LookupDataDto<?> getLookupDataActive(String table, boolean init) {
 

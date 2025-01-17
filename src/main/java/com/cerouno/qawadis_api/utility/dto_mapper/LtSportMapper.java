@@ -25,8 +25,12 @@ public class LtSportMapper {
         dto.setMaintainAt(entity.getMaintainAt());
 
         if (init) {
-            dto.setCreatedBy(DtUserMapper.toDto(entity.getCreatedBy()));
-            dto.setMaintainBy(DtUserMapper.toDto(entity.getMaintainBy()));
+            if(entity.getCreatedBy() != null){
+                dto.setCreatedBy(DtUserMapper.toDto(entity.getCreatedBy()));
+            }
+            if(entity.getMaintainBy() != null){
+                dto.setMaintainBy(DtUserMapper.toDto(entity.getMaintainBy()));
+            }
         }
 
         return dto;
@@ -40,9 +44,7 @@ public class LtSportMapper {
 
         List<LtSportDto> dtoList = new ArrayList<>();
 
-        for (int i = 0; i < entityList.size(); i++) {
-
-            LtSport entity = entityList.get(i);
+        for (LtSport entity : entityList) {
 
             LtSportDto dto = new LtSportDto();
             dto.setSportId(entity.getSportId());
@@ -52,8 +54,12 @@ public class LtSportMapper {
             dto.setMaintainAt(entity.getMaintainAt());
 
             if (init) {
-                dto.setCreatedBy(DtUserMapper.toDto(entity.getCreatedBy()));
-                dto.setMaintainBy(DtUserMapper.toDto(entity.getMaintainBy()));
+                if(entity.getCreatedBy() != null){
+                    dto.setCreatedBy(DtUserMapper.toDto(entity.getCreatedBy()));
+                }
+                if(entity.getMaintainBy() != null){
+                    dto.setMaintainBy(DtUserMapper.toDto(entity.getMaintainBy()));
+                }
             }
 
             dtoList.add(dto);
