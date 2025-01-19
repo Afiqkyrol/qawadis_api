@@ -1,6 +1,4 @@
-package com.cerouno.qawadis_api.dto.entity_dto;
-
-import com.cerouno.qawadis_api.entity.DtUser;
+package com.cerouno.qawadis_api.dto.entityDto;
 
 import java.time.LocalDateTime;
 

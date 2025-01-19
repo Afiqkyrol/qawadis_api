@@ -25,6 +25,12 @@ public class GlobalExceptionHandler {
         return ResponseBuilder.error(HttpStatus.INTERNAL_SERVER_ERROR, AppConstants.ERROR_MSG, e.getMessage());
     }
 
+    // BusinessException Handler
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<?> handleBusinessException(BusinessException e) {
+        return ResponseBuilder.error(e.getStatus(), AppConstants.ERROR_MSG, e.getMessage());
+    }
+
     // RuntimeException Handler
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> handleRuntimeException(RuntimeException e) {

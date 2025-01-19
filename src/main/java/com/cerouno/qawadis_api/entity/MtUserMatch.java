@@ -1,28 +1,29 @@
 package com.cerouno.qawadis_api.entity;
-import com.cerouno.qawadis_api.entity.listener.LtGeneralStatusListener;
-import com.cerouno.qawadis_api.repository.DtUserRepository;
+
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "LT_GENERAL_STATUS")
-@EntityListeners(LtGeneralStatusListener.class)
-public class LtGeneralStatus {
+@Table(name = "MT_USER_MATCH")
+public class MtUserMatch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "status_id")
-    private Integer statusId;
+    @Column(name = "user_match_id")
+    private Integer userMatchId;
 
-    @Column(name = "code", nullable = false, unique = true)
-    private String code;
+    @ManyToOne
+    @JoinColumn(name = "game", updatable = false, referencedColumnName = "match_id")
+    private DtMatch game;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "player", updatable = false, referencedColumnName = "user_id")
+    private DtUser player;
 
-    @Column(name = "active", nullable = false)
-    private Boolean active;
+    @ManyToOne
+    @JoinColumn(name = "status", referencedColumnName = "status_id")
+    private LtGeneralStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by", nullable = false, updatable = false, referencedColumnName = "user_id")
@@ -38,42 +39,38 @@ public class LtGeneralStatus {
     @Column(name = "maintain_at", insertable = false, columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime maintainAt;
 
-    // Constructor
-    public LtGeneralStatus(){
-        active = true;
+    public MtUserMatch(){}
+
+    public Integer getUserMatchId() {
+        return userMatchId;
     }
 
-    // Getters and setters...
-    public Integer getStatusId() {
-        return statusId;
+    public void setUserMatchId(Integer userMatchId) {
+        this.userMatchId = userMatchId;
     }
 
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
+    public DtMatch getGame() {
+        return game;
     }
 
-    public String getCode() {
-        return code;
+    public void setGame(DtMatch game) {
+        this.game = game;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public DtUser getPlayer() {
+        return player;
     }
 
-    public String getDescription() {
-        return description;
+    public void setPlayer(DtUser player) {
+        this.player = player;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public LtGeneralStatus getStatus() {
+        return status;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
+    public void setStatus(LtGeneralStatus status) {
+        this.status = status;
     }
 
     public DtUser getCreatedBy() {
@@ -82,10 +79,6 @@ public class LtGeneralStatus {
 
     public void setCreatedBy(DtUser createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public void setCreatedBy(Integer id, DtUserRepository dtUserRepository) {
-        this.createdBy = dtUserRepository.findByUserId(id);
     }
 
     public LocalDateTime getCreatedAt() {
@@ -104,10 +97,6 @@ public class LtGeneralStatus {
         this.maintainBy = maintainBy;
     }
 
-    public void setMaintainBy(Integer id, DtUserRepository dtUserRepository) {
-        this.maintainBy = dtUserRepository.findByUserId(id);
-    }
-
     public LocalDateTime getMaintainAt() {
         return maintainAt;
     }
@@ -118,11 +107,11 @@ public class LtGeneralStatus {
 
     @Override
     public String toString() {
-        return "LtGeneralStatus{" +
-                "statusId=" + statusId +
-                ", code='" + code + '\'' +
-                ", description='" + description + '\'' +
-                ", active=" + active +
+        return "MtUserMatch{" +
+                "userMatchId=" + userMatchId +
+                ", game=" + game +
+                ", player=" + player +
+                ", status=" + status +
                 ", createdBy=" + createdBy +
                 ", createdAt=" + createdAt +
                 ", maintainBy=" + maintainBy +
@@ -130,4 +119,3 @@ public class LtGeneralStatus {
                 '}';
     }
 }
-

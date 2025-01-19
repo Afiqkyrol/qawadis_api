@@ -5,6 +5,7 @@ public interface AppConstants {
     // Common Messages
     public static final String ERROR_MSG = "An error occurred!";
     public static final String SUCCESS_MSG = "Operation was successful!";
+    public static final String INVALID_TOKEN_MSG = "Invalid token provided!";
 
     // Date format patterns
     public static final String DATE_FORMAT = "yyyy-MM-dd";

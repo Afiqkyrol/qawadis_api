@@ -3,21 +3,20 @@ package com.cerouno.qawadis_api.service.dev;
 import com.cerouno.qawadis_api.constants.AppConstants;
 import com.cerouno.qawadis_api.dto.LookupDataDto;
 import com.cerouno.qawadis_api.dto.RequestDto;
-import com.cerouno.qawadis_api.dto.entity_dto.LtGeneralStatusDto;
-import com.cerouno.qawadis_api.dto.entity_dto.LtSportDto;
+import com.cerouno.qawadis_api.dto.entityDto.LtGeneralStatusDto;
+import com.cerouno.qawadis_api.dto.entityDto.LtSportDto;
 import com.cerouno.qawadis_api.entity.LtGeneralStatus;
 import com.cerouno.qawadis_api.entity.LtSport;
 import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.cerouno.qawadis_api.repository.LtGeneralStatusRepository;
 import com.cerouno.qawadis_api.repository.LtSportRepository;
 import com.cerouno.qawadis_api.service.LookupService;
-import com.cerouno.qawadis_api.utility.dto_mapper.LtGeneralStatusMapper;
-import com.cerouno.qawadis_api.utility.dto_mapper.LtSportMapper;
+import com.cerouno.qawadis_api.utility.dtoMapper.LtGeneralStatusMapper;
+import com.cerouno.qawadis_api.utility.dtoMapper.LtSportMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service

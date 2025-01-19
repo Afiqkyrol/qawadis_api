@@ -1,24 +1,23 @@
-package com.cerouno.qawadis_api.utility.dto_mapper;
+package com.cerouno.qawadis_api.utility.dtoMapper;
 
-import com.cerouno.qawadis_api.dto.entity_dto.LtGeneralStatusDto;
-import com.cerouno.qawadis_api.dto.entity_dto.LtSportDto;
+import com.cerouno.qawadis_api.dto.entityDto.LtGeneralStatusDto;
 import com.cerouno.qawadis_api.entity.LtGeneralStatus;
-import com.cerouno.qawadis_api.entity.LtSport;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LtSportMapper {
+public class LtGeneralStatusMapper {
 
-    public static LtSportDto toDto(LtSport entity, boolean init) {
+    public static LtGeneralStatusDto toDto(LtGeneralStatus entity, boolean init) {
 
         if (entity == null) {
             return null;
         }
 
-        LtSportDto dto = new LtSportDto();
-        dto.setSportId(entity.getSportId());
+        LtGeneralStatusDto dto = new LtGeneralStatusDto();
+        dto.setStatusId(entity.getStatusId());
+        dto.setCode(entity.getCode());
         dto.setDescription(entity.getDescription());
         dto.setActive(entity.getActive());
         dto.setCreatedAt(entity.getCreatedAt());
@@ -36,18 +35,19 @@ public class LtSportMapper {
         return dto;
     }
 
-    public static List<LtSportDto> toDto(List<LtSport> entityList, boolean init){
+    public static List<LtGeneralStatusDto> toDto(List<LtGeneralStatus> entityList, boolean init) {
 
         if (entityList.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<LtSportDto> dtoList = new ArrayList<>();
+        List<LtGeneralStatusDto> dtoList = new ArrayList<>();
 
-        for (LtSport entity : entityList) {
+        for (LtGeneralStatus entity : entityList) {
 
-            LtSportDto dto = new LtSportDto();
-            dto.setSportId(entity.getSportId());
+            LtGeneralStatusDto dto = new LtGeneralStatusDto();
+            dto.setStatusId(entity.getStatusId());
+            dto.setCode(entity.getCode());
             dto.setDescription(entity.getDescription());
             dto.setActive(entity.getActive());
             dto.setCreatedAt(entity.getCreatedAt());

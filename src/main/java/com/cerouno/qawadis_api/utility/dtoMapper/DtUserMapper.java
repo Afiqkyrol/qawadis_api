@@ -1,6 +1,6 @@
-package com.cerouno.qawadis_api.utility.dto_mapper;
+package com.cerouno.qawadis_api.utility.dtoMapper;
 
-import com.cerouno.qawadis_api.dto.entity_dto.DtUserDto;
+import com.cerouno.qawadis_api.dto.entityDto.DtUserDto;
 import com.cerouno.qawadis_api.entity.DtUser;
 
 public class DtUserMapper {

@@ -1,23 +1,22 @@
-package com.cerouno.qawadis_api.utility.dto_mapper;
+package com.cerouno.qawadis_api.utility.dtoMapper;
 
-import com.cerouno.qawadis_api.dto.entity_dto.LtGeneralStatusDto;
-import com.cerouno.qawadis_api.entity.LtGeneralStatus;
+import com.cerouno.qawadis_api.dto.entityDto.LtSportDto;
+import com.cerouno.qawadis_api.entity.LtSport;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LtGeneralStatusMapper {
+public class LtSportMapper {
 
-    public static LtGeneralStatusDto toDto(LtGeneralStatus entity, boolean init) {
+    public static LtSportDto toDto(LtSport entity, boolean init) {
 
         if (entity == null) {
             return null;
         }
 
-        LtGeneralStatusDto dto = new LtGeneralStatusDto();
-        dto.setStatusId(entity.getStatusId());
-        dto.setCode(entity.getCode());
+        LtSportDto dto = new LtSportDto();
+        dto.setSportId(entity.getSportId());
         dto.setDescription(entity.getDescription());
         dto.setActive(entity.getActive());
         dto.setCreatedAt(entity.getCreatedAt());
@@ -35,19 +34,18 @@ public class LtGeneralStatusMapper {
         return dto;
     }
 
-    public static List<LtGeneralStatusDto> toDto(List<LtGeneralStatus> entityList, boolean init) {
+    public static List<LtSportDto> toDto(List<LtSport> entityList, boolean init){
 
         if (entityList.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<LtGeneralStatusDto> dtoList = new ArrayList<>();
+        List<LtSportDto> dtoList = new ArrayList<>();
 
-        for (LtGeneralStatus entity : entityList) {
+        for (LtSport entity : entityList) {
 
-            LtGeneralStatusDto dto = new LtGeneralStatusDto();
-            dto.setStatusId(entity.getStatusId());
-            dto.setCode(entity.getCode());
+            LtSportDto dto = new LtSportDto();
+            dto.setSportId(entity.getSportId());
             dto.setDescription(entity.getDescription());
             dto.setActive(entity.getActive());
             dto.setCreatedAt(entity.getCreatedAt());

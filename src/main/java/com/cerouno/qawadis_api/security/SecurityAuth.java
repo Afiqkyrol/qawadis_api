@@ -17,4 +17,8 @@ public class SecurityAuth {
             return false;
         }
     }
+
+    public static Integer ExtractUserId(HttpServletRequest request){
+        return JwtSecurity.extractUserId(request.getHeader("Authorization").substring(7));
+    }
 }

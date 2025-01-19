@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface LtGeneralStatusRepository extends JpaRepository<LtGeneralStatus,Integer> {
 
+    LtGeneralStatus findByStatusId(Integer id);
+
     List<LtGeneralStatus> findByActiveTrue();
 
     LtGeneralStatus findByCode(String code);

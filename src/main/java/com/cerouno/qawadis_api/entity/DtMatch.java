@@ -17,7 +17,7 @@ public class DtMatch {
     private Integer matchId;
 
     @ManyToOne
-    @JoinColumn(name = "sport_id", referencedColumnName = "sport_id")
+    @JoinColumn(name = "sport", referencedColumnName = "sport_id")
     private LtSport sport;
 
     @Column(name = "venue", nullable = false)
@@ -32,6 +32,9 @@ public class DtMatch {
     @Column(name = "time", nullable = false)
     private LocalTime time;
 
+    @Column(name = "max_player")
+    private Integer maxPlayer;
+
     @Column(name = "map")
     private String map;
 
@@ -39,7 +42,7 @@ public class DtMatch {
     private String remark;
 
     @ManyToOne
-    @JoinColumn(name = "status_id", referencedColumnName = "status_id")
+    @JoinColumn(name = "status", referencedColumnName = "status_id")
     private LtGeneralStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -62,6 +65,10 @@ public class DtMatch {
     // Getters and setters...
     public Integer getMatchId() {
         return matchId;
+    }
+
+    public void setMatchId(Integer matchId) {
+        this.matchId = matchId;
     }
 
     public LtSport getSport() {
@@ -102,6 +109,14 @@ public class DtMatch {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    public Integer getMaxPlayer() {
+        return maxPlayer;
+    }
+
+    public void setMaxPlayer(Integer maxPlayer) {
+        this.maxPlayer = maxPlayer;
     }
 
     public String getMap() {
@@ -177,6 +192,7 @@ public class DtMatch {
                 ", address='" + address + '\'' +
                 ", date=" + date +
                 ", time=" + time +
+                ", maxPlayer=" + maxPlayer +
                 ", map='" + map + '\'' +
                 ", remark='" + remark + '\'' +
                 ", status=" + status +
