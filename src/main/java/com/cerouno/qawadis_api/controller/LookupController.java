@@ -36,7 +36,7 @@ public class LookupController {
     public ResponseEntity<?> saveLookupData(HttpServletRequest request, @RequestBody RequestDto requestDto, @RequestParam("table") String table){
 
         if(!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
-        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, lookupService.saveLookupData(requestDto, table));
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, lookupService.saveLookupData(requestDto, table, SecurityAuth.ExtractUserId(request)));
 
     }
 }

@@ -49,7 +49,7 @@ public class DataInitializer implements CommandLineRunner {
         //user 2
         DtUser user2 = new DtUser();
         if (dtUserRepository.existsById(2)) {
-            user1.setUserId(2);
+            user2.setUserId(2);
         }
         user2.setEmail("admin2@email.com");
         user2.setUsername("admin2");
@@ -59,7 +59,7 @@ public class DataInitializer implements CommandLineRunner {
         //user 3
         DtUser user3 = new DtUser();
         if (dtUserRepository.existsById(3)) {
-            user1.setUserId(3);
+            user3.setUserId(3);
         }
         user3.setEmail("admin3@email.com");
         user3.setUsername("admin3");

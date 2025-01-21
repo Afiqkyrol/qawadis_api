@@ -7,5 +7,5 @@ public interface LookupService {
 
     LookupDataDto<?> getLookupDataActive (String table, boolean init);
 
-    Integer saveLookupData (RequestDto lookupData, String table);
+    Integer saveLookupData (RequestDto<?> lookupData, String table, Integer userId);
 }

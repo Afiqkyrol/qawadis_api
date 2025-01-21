@@ -8,4 +8,6 @@ import java.util.List;
 public interface DtMatchRepository extends JpaRepository<DtMatch,Integer> {
 
     List<DtMatch> findByStatus_statusId(Integer id);
+
+    DtMatch findByMatchId(Integer id);
 }

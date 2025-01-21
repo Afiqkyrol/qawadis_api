@@ -84,10 +84,6 @@ public class LtGeneralStatus {
         this.createdBy = createdBy;
     }
 
-    public void setCreatedBy(Integer id, DtUserRepository dtUserRepository) {
-        this.createdBy = dtUserRepository.findByUserId(id);
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -102,10 +98,6 @@ public class LtGeneralStatus {
 
     public void setMaintainBy(DtUser maintainBy) {
         this.maintainBy = maintainBy;
-    }
-
-    public void setMaintainBy(Integer id, DtUserRepository dtUserRepository) {
-        this.maintainBy = dtUserRepository.findByUserId(id);
     }
 
     public LocalDateTime getMaintainAt() {

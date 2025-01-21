@@ -1,11 +1,13 @@
 package com.cerouno.qawadis_api.entity;
 
+import com.cerouno.qawadis_api.entity.listener.MtUserMatchListener;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "MT_USER_MATCH")
+@EntityListeners(MtUserMatchListener.class)
 public class MtUserMatch {
 
     @Id

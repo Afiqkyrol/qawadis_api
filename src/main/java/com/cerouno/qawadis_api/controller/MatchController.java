@@ -3,10 +3,12 @@ package com.cerouno.qawadis_api.controller;
 import com.cerouno.qawadis_api.constants.AppConstants;
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
+import com.cerouno.qawadis_api.entity.MtUserMatch;
 import com.cerouno.qawadis_api.exception.AuthorizationDeniedException;
 import com.cerouno.qawadis_api.security.SecurityAuth;
 import com.cerouno.qawadis_api.service.MatchService;
 import com.cerouno.qawadis_api.utility.ResponseBuilder;
+import com.cerouno.qawadis_api.utility.dtoMapper.DtMatchMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +47,18 @@ public class MatchController {
     public ResponseEntity<?> getMatchListCancel(HttpServletRequest request, @RequestParam("init") boolean init) {
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchListByStatus(AppConstants.GSTS_CANCEL, init));
+    }
+
+    @GetMapping("/{match_id}")
+    public ResponseEntity<?> findMatch(HttpServletRequest request, @PathVariable("match_id") Integer matchId, @RequestParam("init") boolean init){
+        if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, DtMatchMapper.toDto(matchService.findByMatchId(matchId), init));
+    }
+
+    @PostMapping("/save-user-match")
+    public ResponseEntity<?> saveUserMatch(HttpServletRequest request, @RequestBody RequestDto<MtUserMatch> requestDto){
+        if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.saveUserMatch(requestDto, SecurityAuth.ExtractUserId(request)));
     }
 
 }

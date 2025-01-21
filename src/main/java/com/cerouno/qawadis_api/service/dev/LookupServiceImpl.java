@@ -54,15 +54,15 @@ public class LookupServiceImpl implements LookupService {
     }
 
     @Override
-    public Integer saveLookupData(RequestDto requestDto, String table){
+    public Integer saveLookupData(RequestDto<?> requestDto, String table, Integer userId){
 
         if(table.equals(AppConstants.LT_GENERAL_STATUS_TABLE)){
 
             LtGeneralStatus ltGeneralStatus = objectMapper.convertValue(requestDto.getBody(), LtGeneralStatus.class);
             if(ltGeneralStatus.getStatusId() == null){
-                ltGeneralStatus.setCreatedBy(requestDto.getUserId(), dtUserRepository);
+                ltGeneralStatus.setCreatedBy(dtUserRepository.findByUserId(userId));
             }else{
-                ltGeneralStatus.setMaintainBy(requestDto.getUserId(), dtUserRepository);
+                ltGeneralStatus.setMaintainBy(dtUserRepository.findByUserId(userId));
             }
             return ltGeneralStatusRepository.save(ltGeneralStatus).getStatusId();
 
@@ -70,9 +70,9 @@ public class LookupServiceImpl implements LookupService {
 
             LtSport ltSport = objectMapper.convertValue(requestDto.getBody(), LtSport.class);
             if(ltSport.getSportId() == null){
-                ltSport.setCreatedBy(requestDto.getUserId(), dtUserRepository);
+                ltSport.setCreatedBy(dtUserRepository.findByUserId(userId));
             }else{
-                ltSport.setMaintainBy(requestDto.getUserId(), dtUserRepository);
+                ltSport.setMaintainBy(dtUserRepository.findByUserId(userId));
             }
             return ltSportRepository.save(ltSport).getSportId();
 
