@@ -27,21 +27,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody RequestDto<LoginDto> request) {
-        try {
-            String token = authService.login(request);
-            return ResponseBuilder.success(AppConstants.SUCCESS_MSG, token);
-        }catch (AuthorizationDeniedException e){
-            throw e;
-        }
+        String token = authService.login(request);
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, token);
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RequestDto<DtUser> request) {
-        try {
-            String token = authService.register(request);
-            return ResponseBuilder.success(AppConstants.SUCCESS_MSG, token);
-        }catch (AuthorizationDeniedException e){
-            throw e;
-        }
+        String token = authService.register(request);
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, token);
     }
 }

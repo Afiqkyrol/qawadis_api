@@ -23,16 +23,13 @@ public class LookupController {
         this.lookupService = lookupService;
     }
 
-    @GetMapping("/item")
-    public ResponseEntity<?> getLookupDataActive(HttpServletRequest request, @RequestParam("table") String table, @RequestParam("init") boolean init){
-
+    @GetMapping("/getLookupData")
+    public ResponseEntity<?> getLookupData(HttpServletRequest request, @RequestParam("table") String table, @RequestParam(value = "active", required = false) Boolean active, @RequestParam("init") boolean init){
         if(!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
-        LookupDataDto<?> lookupData = lookupService.getLookupDataActive(table, init);
-        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, lookupData);
-
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, lookupService.getLookupData(table, active, init));
     }
 
-    @PostMapping("/item")
+    @PostMapping("/saveLookupData")
     public ResponseEntity<?> saveLookupData(HttpServletRequest request, @RequestBody RequestDto<?> requestDto, @RequestParam("table") String table){
 
         if(!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);

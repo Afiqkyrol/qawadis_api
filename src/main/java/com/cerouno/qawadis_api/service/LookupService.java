@@ -5,7 +5,7 @@ import com.cerouno.qawadis_api.dto.RequestDto;
 
 public interface LookupService {
 
-    LookupDataDto<?> getLookupDataActive (String table, boolean init);
+    LookupDataDto<?> getLookupData (String table, Boolean active, boolean init);
 
     Integer saveLookupData (RequestDto<?> lookupData, String table, Integer userId);
 }

@@ -13,7 +13,7 @@ public interface MatchService {
 
     Integer saveMatch (RequestDto<DtMatch> requestDto, Integer userId);
 
-    DtMatch findByMatchId (Integer id);
+    DtMatch findMatchById (Integer id);
 
     Integer saveUserMatch (RequestDto<MtUserMatch> requestDto, Integer userId);
 }

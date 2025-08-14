@@ -88,7 +88,34 @@ public class GlobalExceptionHandler {
     // DataIntegrityViolationException Handler (For database constraint violations, such as unique constraint failures)
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<?> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
-        return ResponseBuilder.error(HttpStatus.CONFLICT, AppConstants.ERROR_MSG, e.getMessage());
+        String detailMessage = e.getMessage();
+        Throwable rootCause = e.getRootCause(); // This digs deeper than getCause()
+
+        if (rootCause != null && rootCause.getMessage() != null) {
+            String causeMessage = rootCause.getMessage();
+
+            if (causeMessage.contains("FOREIGN KEY")) {
+                String column = null;
+
+                java.util.regex.Matcher colMatcher = java.util.regex.Pattern
+                        .compile("FOREIGN KEY \\(`(.*?)`\\)")
+                        .matcher(causeMessage);
+                if (colMatcher.find()) {
+                    column = colMatcher.group(1);
+                }
+
+                if (column != null) {
+                    detailMessage = String.format(
+                            "Invalid value for '%s'. It must be a reference to an existing record.",
+                            column
+                    );
+                } else {
+                    detailMessage = "Invalid operation: A referenced record does not exist or has been deleted.";
+                }
+            }
+        }
+
+        return ResponseBuilder.error(HttpStatus.CONFLICT, AppConstants.ERROR_MSG, detailMessage);
     }
 
     // BindException Handler (For validation errors during data binding, like form binding issues)

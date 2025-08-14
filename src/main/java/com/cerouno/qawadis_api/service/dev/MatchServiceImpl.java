@@ -1,6 +1,5 @@
 package com.cerouno.qawadis_api.service.dev;
 
-import com.cerouno.qawadis_api.constants.AppConstants;
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.dto.entityDto.DtMatchDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
@@ -53,7 +52,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public DtMatch findByMatchId(Integer id) {
+    public DtMatch findMatchById(Integer id) {
         return dtMatchRepository.findByMatchId(id);
     }
 

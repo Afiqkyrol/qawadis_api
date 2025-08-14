@@ -25,37 +25,25 @@ public class MatchController {
         this.matchService = matchService;
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveMatch")
     public ResponseEntity<?> saveMatch(HttpServletRequest request, @RequestBody RequestDto<DtMatch> requestDto) {
         if(!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.saveMatch(requestDto, SecurityAuth.ExtractUserId(request)));
     }
 
-    @GetMapping("/open")
-    public ResponseEntity<?> getMatchListActive(HttpServletRequest request, @RequestParam("init") boolean init) {
+    @GetMapping("/getMatchListByStatus")
+    public ResponseEntity<?> getMatchListByStatus(HttpServletRequest request, @RequestParam("status") Integer status, @RequestParam("init") boolean init) {
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
-        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchListByStatus(AppConstants.GSTS_ACTIVE, init));
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchListByStatus(status, init));
     }
 
-    @GetMapping("/close")
-    public ResponseEntity<?> getMatchListInactive(HttpServletRequest request, @RequestParam("init") boolean init) {
+    @GetMapping("/findMatchById")
+    public ResponseEntity<?> findMatchById(HttpServletRequest request, @RequestParam("matchId") Integer matchId, @RequestParam("init") boolean init){
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
-        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchListByStatus(AppConstants.GSTS_INACTIVE, init));
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, DtMatchMapper.toDto(matchService.findMatchById(matchId), init));
     }
 
-    @GetMapping("/cancel")
-    public ResponseEntity<?> getMatchListCancel(HttpServletRequest request, @RequestParam("init") boolean init) {
-        if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
-        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchListByStatus(AppConstants.GSTS_CANCEL, init));
-    }
-
-    @GetMapping("/{match_id}")
-    public ResponseEntity<?> findMatch(HttpServletRequest request, @PathVariable("match_id") Integer matchId, @RequestParam("init") boolean init){
-        if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
-        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, DtMatchMapper.toDto(matchService.findByMatchId(matchId), init));
-    }
-
-    @PostMapping("/save-user-match")
+    @PostMapping("/saveUserMatch")
     public ResponseEntity<?> saveUserMatch(HttpServletRequest request, @RequestBody RequestDto<MtUserMatch> requestDto){
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.saveUserMatch(requestDto, SecurityAuth.ExtractUserId(request)));

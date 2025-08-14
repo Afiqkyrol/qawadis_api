@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,16 +36,26 @@ public class LookupServiceImpl implements LookupService {
     private DtUserRepository dtUserRepository;
 
     @Override
-    public LookupDataDto<?> getLookupDataActive(String table, boolean init) {
+    public LookupDataDto<?> getLookupData(String table, Boolean active, boolean init) {
 
         if(table.equals(AppConstants.LT_GENERAL_STATUS_TABLE)){
 
-            List<LtGeneralStatusDto> ltGeneralStatusDtoList = LtGeneralStatusMapper.toDto(ltGeneralStatusRepository.findByActiveTrue(),init);
+            List<LtGeneralStatusDto> ltGeneralStatusDtoList = new ArrayList<>();
+
+            if(active == null) ltGeneralStatusDtoList = LtGeneralStatusMapper.toDto(ltGeneralStatusRepository.findAll(),init);
+            else if(active) ltGeneralStatusDtoList = LtGeneralStatusMapper.toDto(ltGeneralStatusRepository.findByActiveTrue(),init);
+            else ltGeneralStatusDtoList = LtGeneralStatusMapper.toDto(ltGeneralStatusRepository.findByActiveFalse(),init);
+
             return new LookupDataDto<>(ltGeneralStatusDtoList);
 
         }else if(table.equals(AppConstants.LT_SPORT_TABLE)){
 
-            List<LtSportDto> ltSportDtoList = LtSportMapper.toDto(ltSportRepository.findByActiveTrue(), init);
+            List<LtSportDto> ltSportDtoList = new ArrayList<>();
+
+            if(active == null) ltSportDtoList = LtSportMapper.toDto(ltSportRepository.findAll(), init);
+            else if(active) ltSportDtoList = LtSportMapper.toDto(ltSportRepository.findByActiveTrue(), init);
+            else ltSportDtoList = LtSportMapper.toDto(ltSportRepository.findByActiveFalse(), init);
+
             return new LookupDataDto<>(ltSportDtoList);
 
         }else {
