@@ -68,7 +68,6 @@ public class MatchServiceImpl implements MatchService {
         }else{
             mtUserMatch.setMaintainBy(dtUserRepository.findByUserId(userId));
         }
-
         return mtUserMatchRepository.save(mtUserMatch).getUserMatchId();
     }
 

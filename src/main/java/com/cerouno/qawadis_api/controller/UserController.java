@@ -21,8 +21,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/findUserById")
-    public ResponseEntity<?> findUserById (HttpServletRequest request){
+    @GetMapping("/findUserByToken")
+    public ResponseEntity<?> findUserByToken (HttpServletRequest request){
         if(!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, userService.findUserById(SecurityAuth.ExtractUserId(request)));
     }
