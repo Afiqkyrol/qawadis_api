@@ -1,6 +1,6 @@
 package com.cerouno.qawadis_api.exception;
 
-import com.cerouno.qawadis_api.constants.AppConstants;
+import com.cerouno.qawadis_api.constant.AppConstants;
 import com.cerouno.qawadis_api.utility.ResponseBuilder;
 import org.apache.tomcat.websocket.AuthenticationException;
 import org.hibernate.exception.ConstraintViolationException;

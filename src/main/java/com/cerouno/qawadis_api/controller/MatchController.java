@@ -1,6 +1,6 @@
 package com.cerouno.qawadis_api.controller;
 
-import com.cerouno.qawadis_api.constants.AppConstants;
+import com.cerouno.qawadis_api.constant.AppConstants;
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
 import com.cerouno.qawadis_api.entity.MtUserMatch;

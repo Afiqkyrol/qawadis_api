@@ -1,7 +1,6 @@
 package com.cerouno.qawadis_api.utility;
 
-import com.cerouno.qawadis_api.constants.AppConstants;
-import com.cerouno.qawadis_api.entity.DtMatch;
+import com.cerouno.qawadis_api.constant.AppConstants;
 import com.cerouno.qawadis_api.entity.MtUserMatch;
 import com.cerouno.qawadis_api.exception.BusinessException;
 import com.cerouno.qawadis_api.repository.MtUserMatchRepository;

@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.constants;
+package com.cerouno.qawadis_api.constant;
 
 public interface AppConstants {
 

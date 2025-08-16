@@ -1,6 +1,6 @@
 package com.cerouno.qawadis_api.service.dev;
 
-import com.cerouno.qawadis_api.constants.AppConstants;
+import com.cerouno.qawadis_api.constant.AppConstants;
 import com.cerouno.qawadis_api.dto.LookupDataDto;
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.dto.entityDto.LtGeneralStatusDto;
