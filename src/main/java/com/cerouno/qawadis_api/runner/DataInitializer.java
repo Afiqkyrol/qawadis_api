@@ -75,7 +75,7 @@ public class DataInitializer implements CommandLineRunner {
             status.setCreatedBy(dtUserRepository.findByUserId(1));
         }
         status.setCode("ACTIVE");
-        status.setDescription("ACTIVE");
+        status.setDescription("Active");
         ltGeneralStatusRepository.save(status);
 
         //status inactive
@@ -87,7 +87,7 @@ public class DataInitializer implements CommandLineRunner {
             status2.setCreatedBy(dtUserRepository.findByUserId(1));
         }
         status2.setCode("INACTIVE");
-        status2.setDescription("INACTIVE");
+        status2.setDescription("Inactive");
         ltGeneralStatusRepository.save(status2);
 
         //status cancel
@@ -99,7 +99,7 @@ public class DataInitializer implements CommandLineRunner {
             status3.setCreatedBy(dtUserRepository.findByUserId(1));
         }
         status3.setCode("CANCEL");
-        status3.setDescription("CANCEL");
+        status3.setDescription("Cancel");
         ltGeneralStatusRepository.save(status3);
 
         //sport
