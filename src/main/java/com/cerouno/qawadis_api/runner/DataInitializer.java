@@ -132,6 +132,61 @@ public class DataInitializer implements CommandLineRunner {
         match.setRemark("remark1");
         match.setStatus(ltGeneralStatusRepository.findByStatusId(1));
 
-        dtMatchRepository.save(match);
+        DtMatch match2 = new DtMatch();
+        if(dtMatchRepository.existsById(2)){
+            match2.setMatchId(2);
+            match2.setMaintainBy(dtUserRepository.findByUserId(1));
+        }else{
+            match2.setCreatedBy(dtUserRepository.findByUserId(1));
+        }
+        match2.setSport(ltSportRepository.findBySportId(1));
+        match2.setVenue("venue2");
+        match2.setAddress("address2");
+        match2.setDate(LocalDate.now());
+        match2.setTime(LocalTime.now());
+        match2.setMaxPlayer(2);
+        match2.setMap("map2");
+        match2.setRemark("remark2");
+        match2.setStatus(ltGeneralStatusRepository.findByStatusId(1));
+
+        dtMatchRepository.save(match2);
+
+        DtMatch match3 = new DtMatch();
+        if(dtMatchRepository.existsById(3)){
+            match3.setMatchId(3);
+            match3.setMaintainBy(dtUserRepository.findByUserId(1));
+        }else{
+            match3.setCreatedBy(dtUserRepository.findByUserId(1));
+        }
+        match3.setSport(ltSportRepository.findBySportId(1));
+        match3.setVenue("venue3");
+        match3.setAddress("address3");
+        match3.setDate(LocalDate.now());
+        match3.setTime(LocalTime.now());
+        match3.setMaxPlayer(2);
+        match3.setMap("map3");
+        match3.setRemark("remark3");
+        match3.setStatus(ltGeneralStatusRepository.findByStatusId(1));
+
+        dtMatchRepository.save(match3);
+
+        DtMatch match4 = new DtMatch();
+        if(dtMatchRepository.existsById(4)){
+            match4.setMatchId(4);
+            match4.setMaintainBy(dtUserRepository.findByUserId(1));
+        }else{
+            match4.setCreatedBy(dtUserRepository.findByUserId(1));
+        }
+        match4.setSport(ltSportRepository.findBySportId(1));
+        match4.setVenue("venue4");
+        match4.setAddress("address4");
+        match4.setDate(LocalDate.now());
+        match4.setTime(LocalTime.now());
+        match4.setMaxPlayer(2);
+        match4.setMap("map4");
+        match4.setRemark("remark4");
+        match4.setStatus(ltGeneralStatusRepository.findByStatusId(1));
+
+        dtMatchRepository.save(match4);
     }
 }
