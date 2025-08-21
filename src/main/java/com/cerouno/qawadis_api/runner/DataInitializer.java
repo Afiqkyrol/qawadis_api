@@ -17,7 +17,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Component
-@Profile("dev")
 public class DataInitializer implements CommandLineRunner {
 
     private final DtUserRepository dtUserRepository;
