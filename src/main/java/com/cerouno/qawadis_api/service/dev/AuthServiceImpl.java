@@ -8,10 +8,12 @@ import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.cerouno.qawadis_api.service.AuthService;
 import com.cerouno.qawadis_api.security.JwtSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile("dev")
 public class AuthServiceImpl implements AuthService {
 
     private final DtUserRepository dtUserRepository;

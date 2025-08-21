@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.service.dev;
+package com.cerouno.qawadis_api.service.prod;
 
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.dto.entityDto.DtMatchDto;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Profile("dev")
+@Profile("prod")
 public class MatchServiceImpl implements MatchService {
 
     @Autowired

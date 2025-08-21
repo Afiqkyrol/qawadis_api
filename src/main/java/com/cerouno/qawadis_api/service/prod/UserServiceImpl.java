@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.service.dev;
+package com.cerouno.qawadis_api.service.prod;
 
 import com.cerouno.qawadis_api.dto.entityDto.DtUserDto;
 import com.cerouno.qawadis_api.repository.DtUserRepository;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("dev")
+@Profile("prod")
 public class UserServiceImpl implements UserService {
 
     @Autowired

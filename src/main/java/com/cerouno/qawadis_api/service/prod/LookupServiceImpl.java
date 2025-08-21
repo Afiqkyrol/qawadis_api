@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.service.dev;
+package com.cerouno.qawadis_api.service.prod;
 
 import com.cerouno.qawadis_api.constant.AppConstants;
 import com.cerouno.qawadis_api.dto.LookupDataDto;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Profile("dev")
+@Profile("prod")
 public class LookupServiceImpl implements LookupService {
 
     @Autowired
