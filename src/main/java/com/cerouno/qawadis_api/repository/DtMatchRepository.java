@@ -12,4 +12,6 @@ public interface DtMatchRepository extends JpaRepository<DtMatch,Integer> {
     List<DtMatch> findByStatus_statusId(Integer id);
 
     DtMatch findByMatchId(Integer id);
+
+    Integer countByStatus_statusId(Integer id);
 }

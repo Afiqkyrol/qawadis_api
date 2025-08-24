@@ -12,6 +12,7 @@ public class DtMatchDto {
     private String address;
     private LocalDate date;
     private LocalTime time;
+    private Integer maxPlayer;
     private String map;
     private String remark;
     private LtGeneralStatusDto status;
@@ -68,6 +69,14 @@ public class DtMatchDto {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    public Integer getMaxPlayer() {
+        return maxPlayer;
+    }
+
+    public void setMaxPlayer(Integer maxPlayer) {
+        this.maxPlayer = maxPlayer;
     }
 
     public String getMap() {

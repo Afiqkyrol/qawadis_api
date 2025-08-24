@@ -2,6 +2,7 @@ package com.cerouno.qawadis_api.service;
 
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.dto.entityDto.DtMatchDto;
+import com.cerouno.qawadis_api.dto.entityDto.MtUserMatchDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
 import com.cerouno.qawadis_api.entity.MtUserMatch;
 
@@ -16,4 +17,6 @@ public interface MatchService {
     DtMatch findMatchById (Integer id);
 
     Integer saveUserMatch (RequestDto<MtUserMatch> requestDto, Integer userId);
+
+    List<MtUserMatchDto> getPlayerListByMatch(Integer matchId, Integer status, boolean init);
 }

@@ -1,26 +1,20 @@
 package com.cerouno.qawadis_api.utility.dtoMapper;
 
-import com.cerouno.qawadis_api.dto.entityDto.DtMatchDto;
-import com.cerouno.qawadis_api.entity.DtMatch;
+import com.cerouno.qawadis_api.dto.entityDto.MtUserMatchDto;
+import com.cerouno.qawadis_api.entity.MtUserMatch;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DtMatchMapper {
+public class MtUserMatchMapper {
 
-    public static DtMatchDto toDto(DtMatch entity, boolean init){
+    public static MtUserMatchDto toDto(MtUserMatch entity, boolean init){
 
-        DtMatchDto dto = new DtMatchDto();
-        dto.setMatchId(entity.getMatchId());
-        dto.setSport(LtSportMapper.toDto(entity.getSport(), false));
-        dto.setVenue(entity.getVenue());
-        dto.setAddress(entity.getAddress());
-        dto.setDate(entity.getDate());
-        dto.setTime(entity.getTime());
-        dto.setMaxPlayer(entity.getMaxPlayer());
-        dto.setMap(entity.getMap());
-        dto.setRemark(entity.getRemark());
+        MtUserMatchDto dto = new MtUserMatchDto();
+        dto.setUserMatchId(entity.getUserMatchId());
+        dto.setGame(DtMatchMapper.toDto(entity.getGame(), false));
+        dto.setPlayer(DtUserMapper.toDto(entity.getPlayer()));
         dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
         dto.setCreatedAt(entity.getCreatedAt());
         dto.setMaintainAt(entity.getMaintainAt());
@@ -37,26 +31,20 @@ public class DtMatchMapper {
         return dto;
     }
 
-    public static List<DtMatchDto> toDto(List<DtMatch> entityList, boolean init){
+    public static List<MtUserMatchDto> toDto(List<MtUserMatch> entityList, boolean init){
 
         if (entityList.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<DtMatchDto> dtoList = new ArrayList<>();
+        List<MtUserMatchDto> dtoList = new ArrayList<>();
 
-        for (DtMatch entity : entityList) {
+        for (MtUserMatch entity : entityList) {
 
-            DtMatchDto dto = new DtMatchDto();
-            dto.setMatchId(entity.getMatchId());
-            dto.setSport(LtSportMapper.toDto(entity.getSport(), false));
-            dto.setVenue(entity.getVenue());
-            dto.setAddress(entity.getAddress());
-            dto.setDate(entity.getDate());
-            dto.setTime(entity.getTime());
-            dto.setMaxPlayer(entity.getMaxPlayer());
-            dto.setMap(entity.getMap());
-            dto.setRemark(entity.getRemark());
+            MtUserMatchDto dto = new MtUserMatchDto();
+            dto.setUserMatchId(entity.getUserMatchId());
+            dto.setGame(DtMatchMapper.toDto(entity.getGame(), false));
+            dto.setPlayer(DtUserMapper.toDto(entity.getPlayer()));
             dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
             dto.setCreatedAt(entity.getCreatedAt());
             dto.setMaintainAt(entity.getMaintainAt());

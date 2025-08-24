@@ -1,13 +1,7 @@
 package com.cerouno.qawadis_api.runner;
 
-import com.cerouno.qawadis_api.entity.DtMatch;
-import com.cerouno.qawadis_api.entity.DtUser;
-import com.cerouno.qawadis_api.entity.LtGeneralStatus;
-import com.cerouno.qawadis_api.entity.LtSport;
-import com.cerouno.qawadis_api.repository.DtMatchRepository;
-import com.cerouno.qawadis_api.repository.DtUserRepository;
-import com.cerouno.qawadis_api.repository.LtGeneralStatusRepository;
-import com.cerouno.qawadis_api.repository.LtSportRepository;
+import com.cerouno.qawadis_api.entity.*;
+import com.cerouno.qawadis_api.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -23,13 +17,15 @@ public class DataInitializer implements CommandLineRunner {
     private final LtGeneralStatusRepository ltGeneralStatusRepository;
     private final LtSportRepository ltSportRepository;
     private final DtMatchRepository dtMatchRepository;
+    private final MtUserMatchRepository mtUserMatchRepository;
 
     @Autowired
-    public DataInitializer(DtUserRepository dtUserRepository, LtGeneralStatusRepository ltGeneralStatusRepository, LtSportRepository ltSportRepository, DtMatchRepository dtMatchRepository) {
+    public DataInitializer(DtUserRepository dtUserRepository, LtGeneralStatusRepository ltGeneralStatusRepository, LtSportRepository ltSportRepository, DtMatchRepository dtMatchRepository, MtUserMatchRepository mtUserMatchRepository) {
         this.dtUserRepository = dtUserRepository;
         this.ltGeneralStatusRepository = ltGeneralStatusRepository;
         this.ltSportRepository = ltSportRepository;
         this.dtMatchRepository = dtMatchRepository;
+        this.mtUserMatchRepository = mtUserMatchRepository;
     }
 
     @Override
@@ -187,5 +183,18 @@ public class DataInitializer implements CommandLineRunner {
         match4.setStatus(ltGeneralStatusRepository.findByStatusId(1));
 
         dtMatchRepository.save(match4);
+
+        MtUserMatch userMatch = new MtUserMatch();
+        if(mtUserMatchRepository.existsById(1)){
+            userMatch.setUserMatchId(1);
+            userMatch.setMaintainBy(dtUserRepository.findByUserId(1));
+        }else{
+            userMatch.setCreatedBy(dtUserRepository.findByUserId(1));
+        }
+        userMatch.setGame(dtMatchRepository.findByMatchId(22));
+        userMatch.setStatus(ltGeneralStatusRepository.findByStatusId(1));
+        userMatch.setPlayer(dtUserRepository.findByUserId(1));
+
+        mtUserMatchRepository.save(userMatch);
     }
 }

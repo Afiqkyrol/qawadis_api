@@ -37,6 +37,12 @@ public class MatchController {
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchListByStatus(status, init));
     }
 
+    @GetMapping("/getPlayerListByMatchId")
+    public ResponseEntity<?> getPlayerListByMatch(HttpServletRequest request, @RequestParam("matchId") Integer matchId, @RequestParam("status") Integer status, @RequestParam("init") boolean init) {
+        if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getPlayerListByMatch(matchId, status, init));
+    }
+
     @GetMapping("/findMatchById")
     public ResponseEntity<?> findMatchById(HttpServletRequest request, @RequestParam("matchId") Integer matchId, @RequestParam("init") boolean init){
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);

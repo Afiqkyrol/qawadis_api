@@ -2,6 +2,7 @@ package com.cerouno.qawadis_api.service.dev;
 
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.dto.entityDto.DtMatchDto;
+import com.cerouno.qawadis_api.dto.entityDto.MtUserMatchDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
 import com.cerouno.qawadis_api.entity.MtUserMatch;
 import com.cerouno.qawadis_api.repository.DtMatchRepository;
@@ -10,6 +11,7 @@ import com.cerouno.qawadis_api.repository.MtUserMatchRepository;
 import com.cerouno.qawadis_api.service.MatchService;
 import com.cerouno.qawadis_api.utility.BusinessHelper;
 import com.cerouno.qawadis_api.utility.dtoMapper.DtMatchMapper;
+import com.cerouno.qawadis_api.utility.dtoMapper.MtUserMatchMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -42,6 +44,16 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
+    public DtMatch findMatchById(Integer id) {
+        return dtMatchRepository.findByMatchId(id);
+    }
+
+    @Override
+    public List<MtUserMatchDto> getPlayerListByMatch(Integer matchId, Integer status, boolean init) {
+        return MtUserMatchMapper.toDto(mtUserMatchRepository.findByGame_matchIdAndStatus_statusId(matchId, status), init);
+    }
+
+    @Override
     public Integer saveMatch(RequestDto<DtMatch> requestDto, Integer userId) {
         DtMatch dtMatch = objectMapper.convertValue(requestDto.getBody(), DtMatch.class);
 
@@ -51,11 +63,6 @@ public class MatchServiceImpl implements MatchService {
             dtMatch.setMaintainBy(dtUserRepository.findByUserId(userId));
         }
         return dtMatchRepository.save(dtMatch).getMatchId();
-    }
-
-    @Override
-    public DtMatch findMatchById(Integer id) {
-        return dtMatchRepository.findByMatchId(id);
     }
 
     @Override
