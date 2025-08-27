@@ -16,4 +16,6 @@ public interface MtUserMatchRepository extends JpaRepository<MtUserMatch, Intege
     MtUserMatch findByGame_matchIdAndStatus_statusIdAndPlayer_userId (Integer matchId, Integer statusId, Integer userId);
 
     List<MtUserMatch> findByGame_matchIdAndStatus_statusId (Integer userMatchId, Integer statusId);
+
+    List<MtUserMatch> findByGame_matchId (Integer userMatchId);
 }

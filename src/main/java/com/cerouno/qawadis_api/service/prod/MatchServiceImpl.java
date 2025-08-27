@@ -50,7 +50,11 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public List<MtUserMatchDto> getPlayerListByMatch(Integer matchId, Integer status, boolean init) {
-        return MtUserMatchMapper.toDto(mtUserMatchRepository.findByGame_matchIdAndStatus_statusId(matchId, status), init);
+        if(status != null) {
+            return MtUserMatchMapper.toDto(mtUserMatchRepository.findByGame_matchIdAndStatus_statusId(matchId, status), init);
+        }else {
+            return MtUserMatchMapper.toDto(mtUserMatchRepository.findByGame_matchId(matchId), init);
+        }
     }
 
     @Override

@@ -26,8 +26,8 @@ public class BusinessHelper {
 
         }else{
             MtUserMatch mtUserMatch = mtUserMatchRepository.findByUserMatchId(userMatch.getUserMatchId());
-            if(!mtUserMatch.getStatus().getStatusId().equals(AppConstants.GSTS_ACTIVE))
-                throw new BusinessException(HttpStatus.FORBIDDEN, "Cannot update, current status is not active");
+//            if(!mtUserMatch.getStatus().getStatusId().equals(AppConstants.GSTS_ACTIVE))
+//                throw new BusinessException(HttpStatus.FORBIDDEN, "Cannot update, current status is not active");
             if(!Objects.equals(userId, mtUserMatch.getPlayer().getUserId())){
                 throw new BusinessException(HttpStatus.FORBIDDEN, "Cannot update other player join details");
             }
