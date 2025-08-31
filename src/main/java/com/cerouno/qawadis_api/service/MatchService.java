@@ -6,9 +6,13 @@ import com.cerouno.qawadis_api.dto.entityDto.MtUserMatchDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
 import com.cerouno.qawadis_api.entity.MtUserMatch;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public interface MatchService {
+
+    List<DtMatchDto> getMatchList(Integer sportId, String venue, LocalDate date, LocalTime time, Integer statusId, Integer createdById, boolean init);
 
     List<DtMatchDto> getMatchListByStatus (Integer status, boolean init);
 

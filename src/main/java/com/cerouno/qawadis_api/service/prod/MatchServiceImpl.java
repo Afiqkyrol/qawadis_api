@@ -6,6 +6,7 @@ import com.cerouno.qawadis_api.dto.entityDto.MtUserMatchDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
 import com.cerouno.qawadis_api.entity.MtUserMatch;
 import com.cerouno.qawadis_api.repository.DtMatchRepository;
+import com.cerouno.qawadis_api.repository.DtMatchSpecification;
 import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.cerouno.qawadis_api.repository.MtUserMatchRepository;
 import com.cerouno.qawadis_api.service.MatchService;
@@ -15,8 +16,11 @@ import com.cerouno.qawadis_api.utility.dtoMapper.MtUserMatchMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -37,6 +41,21 @@ public class MatchServiceImpl implements MatchService {
 
     @Autowired
     BusinessHelper businessHelper;
+
+    @Override
+    public List<DtMatchDto> getMatchList(
+            Integer sportId, String venue, LocalDate date,
+            LocalTime time, Integer statusId, Integer createdById,
+            boolean init) {
+        Specification<DtMatch> spec = Specification.where(DtMatchSpecification.hasSport(sportId))
+                .and(DtMatchSpecification.hasVenue(venue))
+                .and(DtMatchSpecification.hasDate(date))
+                .and(DtMatchSpecification.hasTime(time))
+                .and(DtMatchSpecification.hasStatus(statusId))
+                .and(DtMatchSpecification.createdBy(createdById));
+
+        return DtMatchMapper.toDto(dtMatchRepository.findAll(spec), init);
+    }
 
     @Override
     public List<DtMatchDto> getMatchListByStatus(Integer status, boolean init) {

@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @RestController
 @RequestMapping("/match")
 public class MatchController {
@@ -29,6 +32,19 @@ public class MatchController {
     public ResponseEntity<?> saveMatch(HttpServletRequest request, @RequestBody RequestDto<DtMatch> requestDto) {
         if(!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.saveMatch(requestDto, SecurityAuth.ExtractUserId(request)));
+    }
+
+    @GetMapping("/getMatchList")
+    public ResponseEntity<?> getMatchList(HttpServletRequest request,
+                                          @RequestParam(value = "sportId", required = false) Integer sportId,
+                                          @RequestParam(value = "venue", required = false) String venue,
+                                          @RequestParam(value = "date", required = false) LocalDate date,
+                                          @RequestParam(value = "time", required = false) LocalTime time,
+                                          @RequestParam(value = "statusId", required = false) Integer statusId,
+                                          @RequestParam(value = "createdById", required = false) Integer createdById,
+                                          @RequestParam("init") boolean init) {
+        if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchList(sportId, venue, date, time, statusId, createdById, init));
     }
 
     @GetMapping("/getMatchListByStatus")

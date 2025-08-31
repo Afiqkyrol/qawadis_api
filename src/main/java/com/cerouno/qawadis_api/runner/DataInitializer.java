@@ -184,17 +184,17 @@ public class DataInitializer implements CommandLineRunner {
 
         dtMatchRepository.save(match4);
 
-        MtUserMatch userMatch = new MtUserMatch();
-        if(mtUserMatchRepository.existsById(1)){
-            userMatch.setUserMatchId(1);
-            userMatch.setMaintainBy(dtUserRepository.findByUserId(1));
-        }else{
-            userMatch.setCreatedBy(dtUserRepository.findByUserId(1));
-        }
-        userMatch.setGame(dtMatchRepository.findByMatchId(22));
-        userMatch.setStatus(ltGeneralStatusRepository.findByStatusId(1));
-        userMatch.setPlayer(dtUserRepository.findByUserId(1));
-
-        mtUserMatchRepository.save(userMatch);
+//        MtUserMatch userMatch = new MtUserMatch();
+//        if(mtUserMatchRepository.existsById(1)){
+//            userMatch.setUserMatchId(1);
+//            userMatch.setMaintainBy(dtUserRepository.findByUserId(1));
+//        }else{
+//            userMatch.setCreatedBy(dtUserRepository.findByUserId(1));
+//        }
+//        userMatch.setGame(dtMatchRepository.findByMatchId(22));
+//        userMatch.setStatus(ltGeneralStatusRepository.findByStatusId(1));
+//        userMatch.setPlayer(dtUserRepository.findByUserId(1));
+//
+//        mtUserMatchRepository.save(userMatch);
     }
 }
