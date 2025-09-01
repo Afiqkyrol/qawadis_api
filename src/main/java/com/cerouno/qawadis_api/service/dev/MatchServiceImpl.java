@@ -15,6 +15,7 @@ import com.cerouno.qawadis_api.utility.dtoMapper.MtUserMatchMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +54,7 @@ public class MatchServiceImpl implements MatchService {
                 .and(DtMatchSpecification.hasStatus(statusId))
                 .and(DtMatchSpecification.createdBy(createdById));
 
-        return DtMatchMapper.toDto(dtMatchRepository.findAll(spec), init);
+        return DtMatchMapper.toDto(dtMatchRepository.findAll(spec, Sort.by(Sort.Direction.DESC, "createdAt")), init);
     }
 
     @Override

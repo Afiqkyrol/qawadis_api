@@ -1,6 +1,5 @@
 package com.cerouno.qawadis_api.entity;
 import com.cerouno.qawadis_api.entity.listener.DtMatchListener;
-import com.cerouno.qawadis_api.repository.DtUserRepository;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
@@ -35,8 +34,8 @@ public class DtMatch {
     @Column(name = "max_player")
     private Integer maxPlayer;
 
-    @Column(name = "map")
-    private String map;
+    @Column(name = "map_link")
+    private String mapLink;
 
     @Column(name = "remark")
     private String remark;
@@ -119,12 +118,12 @@ public class DtMatch {
         this.maxPlayer = maxPlayer;
     }
 
-    public String getMap() {
-        return map;
+    public String getMapLink() {
+        return mapLink;
     }
 
-    public void setMap(String map) {
-        this.map = map;
+    public void setMapLink(String map) {
+        this.mapLink = map;
     }
 
     public String getRemark() {
@@ -185,7 +184,7 @@ public class DtMatch {
                 ", date=" + date +
                 ", time=" + time +
                 ", maxPlayer=" + maxPlayer +
-                ", map='" + map + '\'' +
+                ", mapLink='" + mapLink + '\'' +
                 ", remark='" + remark + '\'' +
                 ", status=" + status +
                 ", createdBy=" + createdBy +

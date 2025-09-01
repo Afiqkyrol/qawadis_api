@@ -20,7 +20,7 @@ public class DtMatchMapper {
         dto.setDate(DateTimeHelper.toCurrentTimeZone(entity.getDate()));
         dto.setTime(entity.getTime());
         dto.setMaxPlayer(entity.getMaxPlayer());
-        dto.setMap(entity.getMap());
+        dto.setMapLink(entity.getMapLink());
         dto.setRemark(entity.getRemark());
         dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
         dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));
@@ -56,7 +56,7 @@ public class DtMatchMapper {
             dto.setDate(DateTimeHelper.toCurrentTimeZone(entity.getDate()));
             dto.setTime(entity.getTime());
             dto.setMaxPlayer(entity.getMaxPlayer());
-            dto.setMap(entity.getMap());
+            dto.setMapLink(entity.getMapLink());
             dto.setRemark(entity.getRemark());
             dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
             dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));

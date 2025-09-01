@@ -13,7 +13,7 @@ public class DtMatchDto {
     private LocalDate date;
     private LocalTime time;
     private Integer maxPlayer;
-    private String map;
+    private String mapLink;
     private String remark;
     private LtGeneralStatusDto status;
     private DtUserDto createdBy;
@@ -79,12 +79,12 @@ public class DtMatchDto {
         this.maxPlayer = maxPlayer;
     }
 
-    public String getMap() {
-        return map;
+    public String getMapLink() {
+        return mapLink;
     }
 
-    public void setMap(String map) {
-        this.map = map;
+    public void setMapLink(String mapLink) {
+        this.mapLink = mapLink;
     }
 
     public String getRemark() {
@@ -144,7 +144,7 @@ public class DtMatchDto {
                 ", address='" + address + '\'' +
                 ", date=" + date +
                 ", time=" + time +
-                ", map='" + map + '\'' +
+                ", mapLink='" + mapLink + '\'' +
                 ", remark='" + remark + '\'' +
                 ", status=" + status +
                 ", createdBy=" + createdBy +
