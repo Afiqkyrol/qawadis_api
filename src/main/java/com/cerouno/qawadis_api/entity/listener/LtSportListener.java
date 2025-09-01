@@ -6,18 +6,19 @@ import jakarta.persistence.PreUpdate;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 @Component
 public class LtSportListener {
 
     @PrePersist
     public void prePersist(LtSport entity){
-        entity.setCreatedAt(LocalDateTime.now());
+        entity.setCreatedAt(LocalDateTime.now(ZoneOffset.UTC));
     }
 
     @PreUpdate
     public void preUpdate(LtSport entity){
-        entity.setMaintainAt(LocalDateTime.now());
+        entity.setMaintainAt(LocalDateTime.now(ZoneOffset.UTC));
     }
 
 }

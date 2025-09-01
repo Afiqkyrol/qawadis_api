@@ -2,6 +2,7 @@ package com.cerouno.qawadis_api.utility.dtoMapper;
 
 import com.cerouno.qawadis_api.dto.entityDto.LtSportDto;
 import com.cerouno.qawadis_api.entity.LtSport;
+import com.cerouno.qawadis_api.utility.DateTimeHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,8 +20,8 @@ public class LtSportMapper {
         dto.setSportId(entity.getSportId());
         dto.setDescription(entity.getDescription());
         dto.setActive(entity.getActive());
-        dto.setCreatedAt(entity.getCreatedAt());
-        dto.setMaintainAt(entity.getMaintainAt());
+        dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));
+        dto.setMaintainAt(DateTimeHelper.toCurrentTimeZone(entity.getMaintainAt()));
 
         if (init) {
             if(entity.getCreatedBy() != null){
@@ -48,8 +49,8 @@ public class LtSportMapper {
             dto.setSportId(entity.getSportId());
             dto.setDescription(entity.getDescription());
             dto.setActive(entity.getActive());
-            dto.setCreatedAt(entity.getCreatedAt());
-            dto.setMaintainAt(entity.getMaintainAt());
+            dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));
+            dto.setMaintainAt(DateTimeHelper.toCurrentTimeZone(entity.getMaintainAt()));
 
             if (init) {
                 if(entity.getCreatedBy() != null){

@@ -29,8 +29,14 @@ public class DtMatchSpecification {
     }
 
     public static Specification<DtMatch> hasTime(LocalTime time) {
-        return (root, query, cb) -> time == null ? null :
-                cb.equal(root.get("time"), time);
+        return (root, query, cb) -> {
+            if (time == null) return null;
+
+            LocalTime start = time.withSecond(0).withNano(0);
+            LocalTime end = start.plusMinutes(1);
+
+            return cb.between(root.get("time"), start, end);
+        };
     }
 
     public static Specification<DtMatch> hasStatus(Integer statusId) {

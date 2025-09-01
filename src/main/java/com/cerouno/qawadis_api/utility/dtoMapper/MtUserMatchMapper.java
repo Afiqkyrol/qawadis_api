@@ -2,6 +2,7 @@ package com.cerouno.qawadis_api.utility.dtoMapper;
 
 import com.cerouno.qawadis_api.dto.entityDto.MtUserMatchDto;
 import com.cerouno.qawadis_api.entity.MtUserMatch;
+import com.cerouno.qawadis_api.utility.DateTimeHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,8 +17,8 @@ public class MtUserMatchMapper {
         dto.setGame(DtMatchMapper.toDto(entity.getGame(), false));
         dto.setPlayer(DtUserMapper.toDto(entity.getPlayer()));
         dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
-        dto.setCreatedAt(entity.getCreatedAt());
-        dto.setMaintainAt(entity.getMaintainAt());
+        dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));
+        dto.setMaintainAt(DateTimeHelper.toCurrentTimeZone(entity.getMaintainAt()));
 
         if(init){
             if(entity.getCreatedBy() != null){
@@ -46,8 +47,8 @@ public class MtUserMatchMapper {
             dto.setGame(DtMatchMapper.toDto(entity.getGame(), false));
             dto.setPlayer(DtUserMapper.toDto(entity.getPlayer()));
             dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
-            dto.setCreatedAt(entity.getCreatedAt());
-            dto.setMaintainAt(entity.getMaintainAt());
+            dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));
+            dto.setMaintainAt(DateTimeHelper.toCurrentTimeZone(entity.getMaintainAt()));
 
             if (init) {
                 if(entity.getCreatedBy() != null){
