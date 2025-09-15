@@ -41,6 +41,12 @@ public class LtSport {
         active = true;
     }
 
+    public LtSport(String description, DtUser createdBy) {
+        this.description = description;
+        this.active = true;
+        this.createdBy = createdBy;
+    }
+
     // Getters and setters...
     public Integer getSportId() {
         return sportId;

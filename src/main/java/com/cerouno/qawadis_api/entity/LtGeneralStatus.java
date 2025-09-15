@@ -43,6 +43,13 @@ public class LtGeneralStatus {
         active = true;
     }
 
+    public LtGeneralStatus( String code, String description, DtUser createdBy) {
+        this.code = code;
+        this.description = description;
+        this.active = true;
+        this.createdBy = createdBy;
+    }
+
     // Getters and setters...
     public Integer getStatusId() {
         return statusId;

@@ -15,4 +15,6 @@ public interface LtSportRepository extends JpaRepository<LtSport,Integer> {
 
     List<LtSport> findByActiveFalse();
 
+    boolean existsByDescription(String description);
+
 }

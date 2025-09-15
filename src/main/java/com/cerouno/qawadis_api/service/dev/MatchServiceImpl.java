@@ -10,6 +10,7 @@ import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.cerouno.qawadis_api.repository.MtUserMatchRepository;
 import com.cerouno.qawadis_api.service.MatchService;
 import com.cerouno.qawadis_api.utility.BusinessHelper;
+import com.cerouno.qawadis_api.utility.DateTimeHelper;
 import com.cerouno.qawadis_api.utility.dtoMapper.DtMatchMapper;
 import com.cerouno.qawadis_api.utility.dtoMapper.MtUserMatchMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,8 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.List;
 
 @Service
@@ -79,6 +79,10 @@ public class MatchServiceImpl implements MatchService {
     @Override
     public Integer saveMatch(RequestDto<DtMatch> requestDto, Integer userId) {
         DtMatch dtMatch = objectMapper.convertValue(requestDto.getBody(), DtMatch.class);
+
+        LocalDateTime localDateTime = DateTimeHelper.toUtcTimeZone(LocalDateTime.of(dtMatch.getDate(), dtMatch.getTime()));
+        dtMatch.setDate(localDateTime.toLocalDate());
+        dtMatch.setTime(localDateTime.toLocalTime());
 
         if(dtMatch.getMatchId() == null){
             dtMatch.setCreatedBy(dtUserRepository.findByUserId(userId));

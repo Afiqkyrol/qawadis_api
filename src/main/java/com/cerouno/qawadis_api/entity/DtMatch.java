@@ -174,6 +174,13 @@ public class DtMatch {
         this.maintainAt = maintainAt;
     }
 
+    public LocalDateTime getMatchDateTime() {
+        if (date == null || time == null) {
+            return null;
+        }
+        return LocalDateTime.of(date, time);
+    }
+
     @Override
     public String toString() {
         return "DtMatch{" +

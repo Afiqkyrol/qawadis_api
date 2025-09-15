@@ -17,6 +17,7 @@ public interface AppConstants {
     // Status
     public static final Integer GSTS_ACTIVE = 1;
     public static final Integer GSTS_INACTIVE = 2;
-    public static final Integer GSTS_CANCEL = 3;
+    public static final Integer GSTS_CANCELED = 3;
+    public static final Integer GSTS_CLOSED = 4;
 
 }

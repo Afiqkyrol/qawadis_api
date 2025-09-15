@@ -4,6 +4,10 @@ import com.cerouno.qawadis_api.dto.entityDto.DtMatchDto;
 import com.cerouno.qawadis_api.entity.DtMatch;
 import com.cerouno.qawadis_api.utility.DateTimeHelper;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,13 +16,15 @@ public class DtMatchMapper {
 
     public static DtMatchDto toDto(DtMatch entity, boolean init){
 
+        LocalDateTime matchLocalDateTime = LocalDateTime.of(entity.getDate(), entity.getTime());
+
         DtMatchDto dto = new DtMatchDto();
         dto.setMatchId(entity.getMatchId());
         dto.setSport(LtSportMapper.toDto(entity.getSport(), false));
         dto.setVenue(entity.getVenue());
         dto.setAddress(entity.getAddress());
-        dto.setDate(DateTimeHelper.toCurrentTimeZone(entity.getDate()));
-        dto.setTime(entity.getTime());
+        dto.setDate(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalDate());
+        dto.setTime(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalTime());
         dto.setMaxPlayer(entity.getMaxPlayer());
         dto.setMapLink(entity.getMapLink());
         dto.setRemark(entity.getRemark());
@@ -48,13 +54,15 @@ public class DtMatchMapper {
 
         for (DtMatch entity : entityList) {
 
+            LocalDateTime matchLocalDateTime = LocalDateTime.of(entity.getDate(), entity.getTime());
+
             DtMatchDto dto = new DtMatchDto();
             dto.setMatchId(entity.getMatchId());
             dto.setSport(LtSportMapper.toDto(entity.getSport(), false));
             dto.setVenue(entity.getVenue());
             dto.setAddress(entity.getAddress());
-            dto.setDate(DateTimeHelper.toCurrentTimeZone(entity.getDate()));
-            dto.setTime(entity.getTime());
+            dto.setDate(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalDate());
+            dto.setTime(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalTime());
             dto.setMaxPlayer(entity.getMaxPlayer());
             dto.setMapLink(entity.getMapLink());
             dto.setRemark(entity.getRemark());

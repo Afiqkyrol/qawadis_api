@@ -14,18 +14,20 @@ public class DateTimeHelper {
         appZoneId = ZoneId.of(timezone);
     }
 
-    public static LocalDate toCurrentTimeZone(LocalDate localDate) {
-        if (localDate == null) return null;
-        return localDate.atStartOfDay(ZoneOffset.UTC)
-                .withZoneSameInstant(appZoneId)
-                .toLocalDate();
-    }
-
     public static LocalDateTime toCurrentTimeZone(LocalDateTime dateTime) {
         if (dateTime == null) return null;
 
         ZonedDateTime systemZoned = dateTime.atZone(ZoneOffset.UTC);
         ZonedDateTime converted = systemZoned.withZoneSameInstant(appZoneId);
+
+        return converted.toLocalDateTime();
+    }
+
+    public static LocalDateTime toUtcTimeZone(LocalDateTime dateTime) {
+        if (dateTime == null) return null;
+
+        ZonedDateTime systemZoned = dateTime.atZone(appZoneId);
+        ZonedDateTime converted = systemZoned.withZoneSameInstant(ZoneOffset.UTC);
 
         return converted.toLocalDateTime();
     }
