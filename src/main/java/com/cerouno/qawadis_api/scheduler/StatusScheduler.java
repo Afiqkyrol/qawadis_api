@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -36,12 +35,10 @@ public class StatusScheduler {
         LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
         int totalActive = activeMatches.size();
 
-        // Filter only matches that need status change
         List<DtMatch> matchesToUpdate = activeMatches.stream()
                                         .filter(m -> m.getMatchDateTime().isBefore(now))
                                         .toList();
 
-        // Update status if needed
         if (!matchesToUpdate.isEmpty()) {
             LtGeneralStatus closedStatus = ltGeneralStatusRepository.findByStatusId(AppConstants.GSTS_CLOSED);
             matchesToUpdate.forEach(m -> m.setStatus(closedStatus));
