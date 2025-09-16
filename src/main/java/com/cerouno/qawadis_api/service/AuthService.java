@@ -9,4 +9,6 @@ public interface AuthService {
     String login (RequestDto<LoginDto> request);
 
     String register (RequestDto<DtUser> request);
+
+    Integer resetPassword(RequestDto<DtUser> request);
 }

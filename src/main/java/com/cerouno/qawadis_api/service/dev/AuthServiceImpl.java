@@ -47,4 +47,12 @@ public class AuthServiceImpl implements AuthService {
 
         return JwtSecurity.generateToken( dtUserRepository.save(request.getBody()).getUserId());
     }
+
+    public Integer resetPassword(RequestDto<DtUser> request) {
+
+        DtUser dtUser = dtUserRepository.findByUserId(request.getBody().getUserId());
+        dtUser.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
+
+        return dtUserRepository.save(dtUser).getUserId();
+    }
 }
