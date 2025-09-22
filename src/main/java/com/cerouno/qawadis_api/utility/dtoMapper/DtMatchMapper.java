@@ -5,9 +5,6 @@ import com.cerouno.qawadis_api.entity.DtMatch;
 import com.cerouno.qawadis_api.utility.DateTimeHelper;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,6 +12,10 @@ import java.util.List;
 public class DtMatchMapper {
 
     public static DtMatchDto toDto(DtMatch entity, boolean init){
+
+        if(entity == null){
+            return null;
+        }
 
         LocalDateTime matchLocalDateTime = LocalDateTime.of(entity.getDate(), entity.getTime());
 
@@ -26,7 +27,8 @@ public class DtMatchMapper {
         dto.setDate(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalDate());
         dto.setTime(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalTime());
         dto.setMaxPlayer(entity.getMaxPlayer());
-        dto.setMapLink(entity.getMapLink());
+        dto.setMapShareLink(entity.getMapShareLink());
+        dto.setMapEmbedLink(entity.getMapEmbedLink());
         dto.setRemark(entity.getRemark());
         dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
         dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));
@@ -64,7 +66,8 @@ public class DtMatchMapper {
             dto.setDate(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalDate());
             dto.setTime(DateTimeHelper.toCurrentTimeZone(matchLocalDateTime).toLocalTime());
             dto.setMaxPlayer(entity.getMaxPlayer());
-            dto.setMapLink(entity.getMapLink());
+            dto.setMapShareLink(entity.getMapShareLink());
+            dto.setMapEmbedLink(entity.getMapEmbedLink());
             dto.setRemark(entity.getRemark());
             dto.setStatus(LtGeneralStatusMapper.toDto(entity.getStatus(), false));
             dto.setCreatedAt(DateTimeHelper.toCurrentTimeZone(entity.getCreatedAt()));

@@ -6,14 +6,15 @@ import java.time.LocalTime;
 
 public class DtMatchDto {
 
-    private Integer matchId;
+    private Long matchId;
     private LtSportDto sport;
     private String venue;
     private String address;
     private LocalDate date;
     private LocalTime time;
     private Integer maxPlayer;
-    private String mapLink;
+    private String mapShareLink;
+    private String mapEmbedLink;
     private String remark;
     private LtGeneralStatusDto status;
     private DtUserDto createdBy;
@@ -23,11 +24,11 @@ public class DtMatchDto {
 
     public DtMatchDto (){}
 
-    public Integer getMatchId() {
+    public Long getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(Integer matchId) {
+    public void setMatchId(Long matchId) {
         this.matchId = matchId;
     }
 
@@ -79,12 +80,20 @@ public class DtMatchDto {
         this.maxPlayer = maxPlayer;
     }
 
-    public String getMapLink() {
-        return mapLink;
+    public String getMapShareLink() {
+        return mapShareLink;
     }
 
-    public void setMapLink(String mapLink) {
-        this.mapLink = mapLink;
+    public void setMapShareLink(String mapShareLink) {
+        this.mapShareLink = mapShareLink;
+    }
+
+    public String getMapEmbedLink() {
+        return mapEmbedLink;
+    }
+
+    public void setMapEmbedLink(String mapEmbedLink) {
+        this.mapEmbedLink = mapEmbedLink;
     }
 
     public String getRemark() {
@@ -144,7 +153,7 @@ public class DtMatchDto {
                 ", address='" + address + '\'' +
                 ", date=" + date +
                 ", time=" + time +
-                ", mapLink='" + mapLink + '\'' +
+                ", mapShareLink='" + mapShareLink + '\'' +
                 ", remark='" + remark + '\'' +
                 ", status=" + status +
                 ", createdBy=" + createdBy +

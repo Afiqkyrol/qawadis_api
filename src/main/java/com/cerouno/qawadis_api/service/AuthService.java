@@ -10,5 +10,5 @@ public interface AuthService {
 
     String register (RequestDto<DtUser> request);
 
-    Integer resetPassword(RequestDto<DtUser> request);
+    Long resetPassword(RequestDto<DtUser> request);
 }

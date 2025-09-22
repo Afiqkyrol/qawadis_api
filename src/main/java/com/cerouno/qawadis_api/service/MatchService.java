@@ -12,15 +12,15 @@ import java.util.List;
 
 public interface MatchService {
 
-    List<DtMatchDto> getMatchList(Integer sportId, String venue, LocalDate date, LocalTime time, Integer statusId, Integer createdById, boolean init);
+    List<DtMatchDto> getMatchList(Long sportId, String venue, LocalDate date, LocalTime time, Long statusId, Long createdById, boolean init);
 
-    List<DtMatchDto> getMatchListByStatus (Integer status, boolean init);
+    List<DtMatchDto> getMatchListByStatus (Long status, boolean init);
 
-    Integer saveMatch (RequestDto<DtMatch> requestDto, Integer userId);
+    Long saveMatch (RequestDto<DtMatch> requestDto, Long userId);
 
-    DtMatch findMatchById (Integer id);
+    DtMatchDto findMatchById (Long id, boolean init);
 
-    Integer saveUserMatch (RequestDto<MtUserMatch> requestDto, Integer userId);
+    Long saveUserMatch (RequestDto<MtUserMatch> requestDto, Long userId);
 
-    List<MtUserMatchDto> getPlayerListByMatch(Integer matchId, Integer status, boolean init);
+    List<MtUserMatchDto> getPlayerListByMatch(Long matchId, Long status, boolean init);
 }

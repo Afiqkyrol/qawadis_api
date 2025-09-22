@@ -30,15 +30,15 @@ public class DataInitializer implements CommandLineRunner {
 
         //user 1
         DtUser user1 = new DtUser();
-        if (dtUserRepository.existsById(1)) {
-            user1.setUserId(1);
+        if (dtUserRepository.existsById(1L)) {
+            user1.setUserId(1L);
         }
         user1.setEmail("admin@email.com");
         user1.setUsername("admin");
         user1.setPassword("$2a$10$.CqoxTFkiIWMEcXTDa/e9.c8V47yxhZNoP4.BTC5NEDad4aUkMnLy"); //password admin@123
         dtUserRepository.save(user1);
 
-        DtUser admin = dtUserRepository.findByUserId(1);
+        DtUser admin = dtUserRepository.findByUserId(1L);
 
         // --- Status ---
         List<String> statuses = List.of("ACTIVE", "INACTIVE", "CANCELED", "CLOSED");

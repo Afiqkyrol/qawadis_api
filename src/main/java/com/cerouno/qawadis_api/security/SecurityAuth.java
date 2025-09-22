@@ -18,7 +18,7 @@ public class SecurityAuth {
         }
     }
 
-    public static Integer ExtractUserId(HttpServletRequest request){
+    public static Long ExtractUserId(HttpServletRequest request){
         return JwtSecurity.extractUserId(request.getHeader("Authorization").substring(7));
     }
 }

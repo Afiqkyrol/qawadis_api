@@ -12,6 +12,10 @@ public class MtUserMatchMapper {
 
     public static MtUserMatchDto toDto(MtUserMatch entity, boolean init){
 
+        if(entity == null){
+            return null;
+        }
+
         MtUserMatchDto dto = new MtUserMatchDto();
         dto.setUserMatchId(entity.getUserMatchId());
         dto.setGame(DtMatchMapper.toDto(entity.getGame(), false));

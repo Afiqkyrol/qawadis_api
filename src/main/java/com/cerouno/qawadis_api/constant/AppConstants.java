@@ -15,9 +15,9 @@ public interface AppConstants {
     public static final String LT_SPORT_TABLE = "LT002";
 
     // Status
-    public static final Integer GSTS_ACTIVE = 1;
-    public static final Integer GSTS_INACTIVE = 2;
-    public static final Integer GSTS_CANCELED = 3;
-    public static final Integer GSTS_CLOSED = 4;
+    public static final Long GSTS_ACTIVE = 1L;
+    public static final Long GSTS_INACTIVE = 2L;
+    public static final Long GSTS_CANCELED = 3L;
+    public static final Long GSTS_CLOSED = 4L;
 
 }

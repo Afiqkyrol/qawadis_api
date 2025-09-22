@@ -7,15 +7,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MtUserMatchRepository extends JpaRepository<MtUserMatch, Integer> {
+public interface MtUserMatchRepository extends JpaRepository<MtUserMatch, Long> {
 
-    MtUserMatch findByUserMatchId (Integer id);
+    MtUserMatch findByUserMatchId (Long id);
 
-    Integer countByGame_matchIdAndStatus_statusId (Integer matchId, Integer statusId);
+    Long countByGame_matchIdAndStatus_statusId (Long matchId, Long statusId);
 
-    MtUserMatch findByGame_matchIdAndStatus_statusIdAndPlayer_userId (Integer matchId, Integer statusId, Integer userId);
+    MtUserMatch findByGame_matchIdAndStatus_statusIdAndPlayer_userId (Long matchId, Long statusId, Long userId);
 
-    List<MtUserMatch> findByGame_matchIdAndStatus_statusId (Integer userMatchId, Integer statusId);
+    List<MtUserMatch> findByGame_matchIdAndStatus_statusId (Long userMatchId, Long statusId);
 
-    List<MtUserMatch> findByGame_matchId (Integer userMatchId);
+    List<MtUserMatch> findByGame_matchId (Long userMatchId);
 }

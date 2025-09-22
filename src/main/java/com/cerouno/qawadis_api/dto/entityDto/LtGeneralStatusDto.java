@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class LtGeneralStatusDto {
 
-    private Integer statusId;
+    private Long statusId;
     private String code;
     private String description;
     private Boolean active;
@@ -15,11 +15,11 @@ public class LtGeneralStatusDto {
 
     public LtGeneralStatusDto(){}
 
-    public Integer getStatusId() {
+    public Long getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(Integer statusId) {
+    public void setStatusId(Long statusId) {
         this.statusId = statusId;
     }
 
@@ -93,4 +93,3 @@ public class LtGeneralStatusDto {
                 '}';
     }
 }
-

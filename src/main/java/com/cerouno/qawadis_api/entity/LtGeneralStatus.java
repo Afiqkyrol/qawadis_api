@@ -13,7 +13,7 @@ public class LtGeneralStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "status_id")
-    private Integer statusId;
+    private Long statusId;
 
     @Column(name = "code", nullable = false, unique = true)
     private String code;
@@ -51,11 +51,11 @@ public class LtGeneralStatus {
     }
 
     // Getters and setters...
-    public Integer getStatusId() {
+    public Long getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(Integer statusId) {
+    public void setStatusId(Long statusId) {
         this.statusId = statusId;
     }
 
@@ -129,4 +129,3 @@ public class LtGeneralStatus {
                 '}';
     }
 }
-

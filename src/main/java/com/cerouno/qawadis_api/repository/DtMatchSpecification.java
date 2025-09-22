@@ -13,7 +13,7 @@ import java.time.LocalTime;
 
 public class DtMatchSpecification {
 
-    public static Specification<DtMatch> hasSport(Integer sportId) {
+    public static Specification<DtMatch> hasSport(Long sportId) {
         return (root, query, cb) -> sportId == null ? null :
                 cb.equal(root.get("sport").get("sportId"), sportId);
     }
@@ -39,12 +39,12 @@ public class DtMatchSpecification {
         };
     }
 
-    public static Specification<DtMatch> hasStatus(Integer statusId) {
+    public static Specification<DtMatch> hasStatus(Long statusId) {
         return (root, query, cb) -> statusId == null ? null :
                 cb.equal(root.get("status").get("statusId"), statusId);
     }
 
-    public static Specification<DtMatch> createdBy(Integer userId) {
+    public static Specification<DtMatch> createdBy(Long userId) {
         return (root, query, cb) -> userId == null ? null :
                 cb.equal(root.get("createdBy").get("userId"), userId);
     }

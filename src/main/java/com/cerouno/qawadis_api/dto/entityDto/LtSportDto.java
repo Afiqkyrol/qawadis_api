@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class LtSportDto {
 
-    private Integer sportId;
+    private Long sportId;
     private String description;
     private Boolean active;
     private DtUserDto createdBy;
@@ -14,11 +14,11 @@ public class LtSportDto {
 
     public LtSportDto(){}
 
-    public Integer getSportId() {
+    public Long getSportId() {
         return sportId;
     }
 
-    public void setSportId(Integer sportId) {
+    public void setSportId(Long sportId) {
         this.sportId = sportId;
     }
 

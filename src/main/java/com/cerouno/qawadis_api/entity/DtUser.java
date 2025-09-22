@@ -13,7 +13,7 @@ public class DtUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -42,11 +42,11 @@ public class DtUser {
     public DtUser(){}
 
     // Getters and setters...
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

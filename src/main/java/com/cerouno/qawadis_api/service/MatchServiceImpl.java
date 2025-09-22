@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.service.dev;
+package com.cerouno.qawadis_api.service;
 
 import com.cerouno.qawadis_api.dto.RequestDto;
 import com.cerouno.qawadis_api.dto.entityDto.DtMatchDto;
@@ -8,7 +8,6 @@ import com.cerouno.qawadis_api.repository.DtMatchRepository;
 import com.cerouno.qawadis_api.repository.DtMatchSpecification;
 import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.cerouno.qawadis_api.repository.MtUserMatchRepository;
-import com.cerouno.qawadis_api.service.MatchService;
 import com.cerouno.qawadis_api.utility.BusinessHelper;
 import com.cerouno.qawadis_api.utility.DateTimeHelper;
 import com.cerouno.qawadis_api.utility.dtoMapper.DtMatchMapper;
@@ -24,7 +23,6 @@ import java.time.*;
 import java.util.List;
 
 @Service
-@Profile("dev")
 public class MatchServiceImpl implements MatchService {
 
     @Autowired
@@ -44,8 +42,8 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public List<DtMatchDto> getMatchList(
-            Integer sportId, String venue, LocalDate date,
-            LocalTime time, Integer statusId, Integer createdById,
+            Long sportId, String venue, LocalDate date,
+            LocalTime time, Long statusId, Long createdById,
             boolean init) {
         Specification<DtMatch> spec = Specification.where(DtMatchSpecification.hasSport(sportId))
                 .and(DtMatchSpecification.hasVenue(venue))
@@ -58,17 +56,17 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public List<DtMatchDto> getMatchListByStatus(Integer status, boolean init) {
+    public List<DtMatchDto> getMatchListByStatus(Long status, boolean init) {
         return DtMatchMapper.toDto(dtMatchRepository.findByStatus_statusId(status), init);
     }
 
     @Override
-    public DtMatch findMatchById(Integer id) {
-        return dtMatchRepository.findByMatchId(id);
+    public DtMatchDto findMatchById(Long id, boolean init) {
+        return DtMatchMapper.toDto(dtMatchRepository.findByMatchId(id), init);
     }
 
     @Override
-    public List<MtUserMatchDto> getPlayerListByMatch(Integer matchId, Integer status, boolean init) {
+    public List<MtUserMatchDto> getPlayerListByMatch(Long matchId, Long status, boolean init) {
         if(status != null) {
             return MtUserMatchMapper.toDto(mtUserMatchRepository.findByGame_matchIdAndStatus_statusId(matchId, status), init);
         }else {
@@ -77,7 +75,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public Integer saveMatch(RequestDto<DtMatch> requestDto, Integer userId) {
+    public Long saveMatch(RequestDto<DtMatch> requestDto, Long userId) {
         DtMatch dtMatch = objectMapper.convertValue(requestDto.getBody(), DtMatch.class);
 
         LocalDateTime localDateTime = DateTimeHelper.toUtcTimeZone(LocalDateTime.of(dtMatch.getDate(), dtMatch.getTime()));
@@ -93,7 +91,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public Integer saveUserMatch(RequestDto<MtUserMatch> requestDto, Integer userId) {
+    public Long saveUserMatch(RequestDto<MtUserMatch> requestDto, Long userId) {
         MtUserMatch mtUserMatch =  objectMapper.convertValue(requestDto.getBody(), MtUserMatch.class);
         mtUserMatch.setGame(dtMatchRepository.findByMatchId(mtUserMatch.getGame().getMatchId()));
 

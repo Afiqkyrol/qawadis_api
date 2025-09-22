@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class MtUserMatchDto {
 
-    private Integer userMatchId;
+    private Long userMatchId;
     private DtMatchDto game;
     private DtUserDto player;
     private LtGeneralStatusDto status;
@@ -72,11 +72,11 @@ public class MtUserMatchDto {
         this.game = game;
     }
 
-    public Integer getUserMatchId() {
+    public Long getUserMatchId() {
         return userMatchId;
     }
 
-    public void setUserMatchId(Integer userMatchId) {
+    public void setUserMatchId(Long userMatchId) {
         this.userMatchId = userMatchId;
     }
 

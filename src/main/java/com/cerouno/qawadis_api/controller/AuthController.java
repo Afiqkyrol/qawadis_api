@@ -35,4 +35,9 @@ public class AuthController {
         String token = authService.register(request);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, token);
     }
+
+    @PostMapping("/resetPassword")
+    public ResponseEntity<?> resetPassword(@RequestBody RequestDto<DtUser> request) {
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, authService.resetPassword(request));
+    }
 }

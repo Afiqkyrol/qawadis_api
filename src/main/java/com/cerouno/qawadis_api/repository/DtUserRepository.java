@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface DtUserRepository extends JpaRepository<DtUser,Integer> {
-    DtUser findByUserId(Integer userId);
+public interface DtUserRepository extends JpaRepository<DtUser,Long> {
+    DtUser findByUserId(Long userId);
 
     Optional<DtUser> findByEmail(String email);
 

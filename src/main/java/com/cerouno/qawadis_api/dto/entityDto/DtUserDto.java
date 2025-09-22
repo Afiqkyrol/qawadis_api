@@ -2,17 +2,17 @@ package com.cerouno.qawadis_api.dto.entityDto;
 
 public class DtUserDto {
 
-    private Integer userId;
+    private Long userId;
     private String username;
     private String email;
 
     public DtUserDto(){}
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LtGeneralStatusRepository extends JpaRepository<LtGeneralStatus,Integer> {
+public interface LtGeneralStatusRepository extends JpaRepository<LtGeneralStatus,Long> {
 
-    LtGeneralStatus findByStatusId(Integer id);
+    LtGeneralStatus findByStatusId(Long id);
 
     List<LtGeneralStatus> findByActiveTrue();
 

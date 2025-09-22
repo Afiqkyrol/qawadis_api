@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.service.dev;
+package com.cerouno.qawadis_api.service;
 
 import com.cerouno.qawadis_api.constant.AppConstants;
 import com.cerouno.qawadis_api.dto.LookupDataDto;
@@ -10,7 +10,6 @@ import com.cerouno.qawadis_api.entity.LtSport;
 import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.cerouno.qawadis_api.repository.LtGeneralStatusRepository;
 import com.cerouno.qawadis_api.repository.LtSportRepository;
-import com.cerouno.qawadis_api.service.LookupService;
 import com.cerouno.qawadis_api.utility.dtoMapper.LtGeneralStatusMapper;
 import com.cerouno.qawadis_api.utility.dtoMapper.LtSportMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Profile("dev")
 public class LookupServiceImpl implements LookupService {
 
     @Autowired
@@ -67,7 +65,7 @@ public class LookupServiceImpl implements LookupService {
     }
 
     @Override
-    public Integer saveLookupData(RequestDto<?> requestDto, String table, Integer userId){
+    public Long saveLookupData(RequestDto<?> requestDto, String table, Long userId){
 
         if(table.equals(AppConstants.LT_GENERAL_STATUS_TABLE)){
 

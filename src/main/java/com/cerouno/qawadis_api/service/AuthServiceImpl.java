@@ -1,4 +1,4 @@
-package com.cerouno.qawadis_api.service.prod;
+package com.cerouno.qawadis_api.service;
 
 import com.cerouno.qawadis_api.dto.LoginDto;
 import com.cerouno.qawadis_api.dto.RequestDto;
@@ -6,14 +6,12 @@ import com.cerouno.qawadis_api.entity.DtUser;
 import com.cerouno.qawadis_api.exception.AuthorizationDeniedException;
 import com.cerouno.qawadis_api.repository.DtUserRepository;
 import com.cerouno.qawadis_api.security.JwtSecurity;
-import com.cerouno.qawadis_api.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("prod")
 public class AuthServiceImpl implements AuthService {
 
     private final DtUserRepository dtUserRepository;
@@ -48,9 +46,9 @@ public class AuthServiceImpl implements AuthService {
         return JwtSecurity.generateToken( dtUserRepository.save(request.getBody()).getUserId());
     }
 
-    public Integer resetPassword(RequestDto<DtUser> request) {
+    public Long resetPassword(RequestDto<DtUser> request) {
 
-        DtUser dtUser = dtUserRepository.findByUserId(request.getBody().getUserId());
+        DtUser dtUser = dtUserRepository.findByUserId(request.getBody().getUserId().longValue());
         dtUser.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
 
         return dtUserRepository.save(dtUser).getUserId();

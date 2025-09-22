@@ -13,7 +13,7 @@ public class DtMatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "match_id")
-    private Integer matchId;
+    private Long matchId;
 
     @ManyToOne
     @JoinColumn(name = "sport", referencedColumnName = "sport_id")
@@ -34,8 +34,11 @@ public class DtMatch {
     @Column(name = "max_player")
     private Integer maxPlayer;
 
-    @Column(name = "map_link")
-    private String mapLink;
+    @Column(name = "map_share_link")
+    private String mapShareLink;
+
+    @Column(name = "map_embed_link")
+    private String mapEmbedLink;
 
     @Column(name = "remark")
     private String remark;
@@ -62,11 +65,11 @@ public class DtMatch {
     public DtMatch(){}
 
     // Getters and setters...
-    public Integer getMatchId() {
+    public Long getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(Integer matchId) {
+    public void setMatchId(Long matchId) {
         this.matchId = matchId;
     }
 
@@ -118,12 +121,20 @@ public class DtMatch {
         this.maxPlayer = maxPlayer;
     }
 
-    public String getMapLink() {
-        return mapLink;
+    public String getMapShareLink() {
+        return mapShareLink;
     }
 
-    public void setMapLink(String map) {
-        this.mapLink = map;
+    public void setMapShareLink(String mapShareLink) {
+        this.mapShareLink = mapShareLink;
+    }
+
+    public String getMapEmbedLink() {
+        return mapEmbedLink;
+    }
+
+    public void setMapEmbedLink(String mapEmbedLink) {
+        this.mapEmbedLink = mapEmbedLink;
     }
 
     public String getRemark() {
@@ -191,7 +202,8 @@ public class DtMatch {
                 ", date=" + date +
                 ", time=" + time +
                 ", maxPlayer=" + maxPlayer +
-                ", mapLink='" + mapLink + '\'' +
+                ", mapShareLink='" + mapShareLink + '\'' +
+                ", mapEmbedLink='" + mapEmbedLink + '\'' +
                 ", remark='" + remark + '\'' +
                 ", status=" + status +
                 ", createdBy=" + createdBy +

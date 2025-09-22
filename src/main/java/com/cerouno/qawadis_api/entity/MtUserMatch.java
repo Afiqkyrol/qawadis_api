@@ -13,7 +13,7 @@ public class MtUserMatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_match_id")
-    private Integer userMatchId;
+    private Long userMatchId;
 
     @ManyToOne
     @JoinColumn(name = "game", updatable = false, referencedColumnName = "match_id")
@@ -43,11 +43,11 @@ public class MtUserMatch {
 
     public MtUserMatch(){}
 
-    public Integer getUserMatchId() {
+    public Long getUserMatchId() {
         return userMatchId;
     }
 
-    public void setUserMatchId(Integer userMatchId) {
+    public void setUserMatchId(Long userMatchId) {
         this.userMatchId = userMatchId;
     }
 

@@ -14,13 +14,13 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Repository
-public interface DtMatchRepository extends JpaRepository<DtMatch,Integer>, JpaSpecificationExecutor<DtMatch> {
+public interface DtMatchRepository extends JpaRepository<DtMatch,Long>, JpaSpecificationExecutor<DtMatch> {
 
-    List<DtMatch> findByStatus_statusId(Integer id);
+    List<DtMatch> findByStatus_statusId(Long id);
 
-    DtMatch findByMatchId(Integer id);
+    DtMatch findByMatchId(Long id);
 
-    Integer countByStatus_statusId(Integer id);
+    Long countByStatus_statusId(Long id);
 
     //Custom DAO
     @Query("SELECT m FROM DtMatch m " + "WHERE (m.date < :dateNow OR (m.date = :today AND m.time < :timeNow)) " + "AND m.status.statusId = 1")

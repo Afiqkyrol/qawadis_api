@@ -4,5 +4,5 @@ import com.cerouno.qawadis_api.dto.entityDto.DtUserDto;
 
 public interface UserService {
 
-    DtUserDto findUserById(Integer userId);
+    DtUserDto findUserById(Long userId);
 }

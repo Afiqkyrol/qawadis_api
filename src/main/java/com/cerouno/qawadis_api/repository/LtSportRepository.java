@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LtSportRepository extends JpaRepository<LtSport,Integer> {
+public interface LtSportRepository extends JpaRepository<LtSport,Long> {
 
-    LtSport findBySportId(Integer id);
+    LtSport findBySportId(Long id);
 
     List<LtSport> findByActiveTrue();
 

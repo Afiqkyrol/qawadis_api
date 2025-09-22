@@ -36,33 +36,33 @@ public class MatchController {
 
     @GetMapping("/getMatchList")
     public ResponseEntity<?> getMatchList(HttpServletRequest request,
-                                          @RequestParam(value = "sportId", required = false) Integer sportId,
+                                          @RequestParam(value = "sportId", required = false) Long sportId,
                                           @RequestParam(value = "venue", required = false) String venue,
                                           @RequestParam(value = "date", required = false) LocalDate date,
                                           @RequestParam(value = "time", required = false) LocalTime time,
-                                          @RequestParam(value = "statusId", required = false) Integer statusId,
-                                          @RequestParam(value = "createdById", required = false) Integer createdById,
+                                          @RequestParam(value = "statusId", required = false) Long statusId,
+                                          @RequestParam(value = "createdById", required = false) Long createdById,
                                           @RequestParam("init") boolean init) {
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchList(sportId, venue, date, time, statusId, createdById, init));
     }
 
     @GetMapping("/getMatchListByStatus")
-    public ResponseEntity<?> getMatchListByStatus(HttpServletRequest request, @RequestParam("status") Integer status, @RequestParam("init") boolean init) {
+    public ResponseEntity<?> getMatchListByStatus(HttpServletRequest request, @RequestParam("status") Long status, @RequestParam("init") boolean init) {
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getMatchListByStatus(status, init));
     }
 
     @GetMapping("/getPlayerListByMatchId")
-    public ResponseEntity<?> getPlayerListByMatch(HttpServletRequest request, @RequestParam("matchId") Integer matchId, @RequestParam(value = "status", required = false) Integer status, @RequestParam("init") boolean init) {
+    public ResponseEntity<?> getPlayerListByMatch(HttpServletRequest request, @RequestParam("matchId") Long matchId, @RequestParam(value = "status", required = false) Long status, @RequestParam("init") boolean init) {
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
         return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.getPlayerListByMatch(matchId, status, init));
     }
 
     @GetMapping("/findMatchById")
-    public ResponseEntity<?> findMatchById(HttpServletRequest request, @RequestParam("matchId") Integer matchId, @RequestParam("init") boolean init){
+    public ResponseEntity<?> findMatchById(HttpServletRequest request, @RequestParam("matchId") Long matchId, @RequestParam("init") boolean init){
         if (!SecurityAuth.AuthorizeToken(request)) throw new AuthorizationDeniedException(AppConstants.INVALID_TOKEN_MSG);
-        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, DtMatchMapper.toDto(matchService.findMatchById(matchId), init));
+        return ResponseBuilder.success(AppConstants.SUCCESS_MSG, matchService.findMatchById(matchId, init));
     }
 
     @PostMapping("/saveUserMatch")

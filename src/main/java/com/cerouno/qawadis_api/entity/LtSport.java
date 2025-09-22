@@ -14,7 +14,7 @@ public class LtSport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sport_id")
-    private Integer sportId;
+    private Long sportId;
 
     @Column(name = "description", nullable = false)
     private String description;
@@ -48,11 +48,11 @@ public class LtSport {
     }
 
     // Getters and setters...
-    public Integer getSportId() {
+    public Long getSportId() {
         return sportId;
     }
 
-    public void setSportId(Integer sportId) {
+    public void setSportId(Long sportId) {
         this.sportId = sportId;
     }
 
@@ -117,4 +117,3 @@ public class LtSport {
                 '}';
     }
 }
-
